@@ -1,0 +1,22 @@
+{
+  "name": "planetsdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxdgoad/PlanetsDemo.git"
+  },
+  "author": "Poor Yorick : Jace Bayless, Max Goad, Meet Kapadia, Tri Pham, Apurva Rai, Minye Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxdgoad/PlanetsDemo/issues"
+  },
+  "homepage": "https://github.com/maxdgoad/PlanetsDemo#readme",
+  "dependencies": {
+    "p5": "^0.10.2"
+  }
+}
