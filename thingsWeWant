@@ -1,0 +1,24 @@
+features we want::
+
+somewhat accurate solar system model
+based on gravity and mass of planets ( their velocities and so forth, no special placements and so on)
+
+ability to select a planet and have the camera move to that planet
+the camera can then be dragged around the planet (and moon are also present)
+
+planets have trails of their motion in the past few seconds
+
+ability to add a planet of set mass and radius to a spot in the solar system and view how the system reacts. 
+(adding a huge moon to the earth would do whatever it would to the earth and moons paths)
+
+BLACK HOLE
+if something gets to massive and the radius is not big enough to contain it, according to the proper equations 
+we get black hole
+
+possibly super nova 
+
+ability to zoom out of the solar system and see what is outside and beyond (the game everything on steam)
+
+music component::
+
+Changing focus to one planet (selecting it and the camera moving)
