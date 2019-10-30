@@ -24,10 +24,7 @@ let last = [];
 let font;
 fontsize = 40;
 
-let word = 0;
-
-
-
+let rate = 0;
 
 
 function preload() {
@@ -108,10 +105,8 @@ function keyDown(){
 	
 }
 
+
 function mouseWheel(event) {
-	//console.log(event.delta)
-	
-	
 	
 	camX/=camRad;
 	camY/=camRad;
@@ -129,19 +124,12 @@ function mouseWheel(event) {
 }
 
 
+
 function draw() {
 	background(0);
-	camera(camX + transX, camY, camZ, transX, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction? Yes I think so after playing with it for a second ( 0,1,0 is level with xy-plane)
-	
-	//orbitControl(); //allows for dragging around a point
-	
-  
-  // assigning sliders' value to each parameters
-	
-	
-	
-	
-	
+	keyDown();
+	camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction? Yes I think so after playing with it for a second ( 0,1,0 is level with xy-plane)
+
 	orbitX+=.01;
 	orbitZ+=.01;
 	
@@ -153,26 +141,13 @@ function draw() {
         sphere(43, 100, 50);
  
 	pop();
-	
-	
-	for(rep = 0; rep< 15; rep++){
-		push();
-		texture(mars);
-		translate(last[rep][0], last[rep][1], last[rep][2]);
-		//sphere(20,100,100);
-		pop();
-	}
-	
-	
-	
-	last[Math.floor((frameCount%150)/5) ] = [sin(orbitX)*300  + transX, orbitY, cos(orbitZ)*300]
+
+	last[Math.floor((frameCount%150)/5) ] = [sin(orbitX)*300, orbitY, cos(orbitZ)*300]
 	
 	stroke(255);
 	strokeWeight(7);
   	noFill();
 	
-	
-	if(150 < frameCount ){
 		beginShape(); 
 
 			for(rep = Math.floor((frameCount%150)/5)+1; rep < 30; rep++){
@@ -186,52 +161,22 @@ function draw() {
 			}
 
 		endShape();
-	}
-	
-	
-	
-	
-	
-
-
-	
-	transX += 0;
-		
-  	translate(transX,0,0);
 	
 	texture(planet);
 	sphere(169, 100, 100);
 	
-	keyDown();
-	
 	texture(back);
-	
 	sphere(2000, 100);
-	
-	
-	
 
-	 
-   //first three are xyz of camera and next three are where its looking
 	if(frameCount%5 == 0){
 		
-		word = Math.floor(getFrameRate());
+		rate = Math.floor(getFrameRate());
 		
 	}
+	
 	fill(255);
-	text(word,250,250);
+	
+	text(rate, 250, 250);
 	
 }
 
-//function mouseDragged() {
-	/*
-	Z = Z+(height/2 - pwinMouseY)/height;
-	X = X+(width/2 - pwinMouseX)/width;
-  camera(X, Y, Z, centerX, centerY, centerZ, 0 ,1, 0);
-	
-	console.log( X + " "  +Y + " " + Z);
-	*/
-  
- 
-  //return false;
-//}

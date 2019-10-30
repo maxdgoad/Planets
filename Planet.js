@@ -8,9 +8,10 @@ class Planet {
 		this.mass = mass;
 		
     }
-    add(num1) 
+    draw() 
     {
-        return new Complex(num1.real + this.real, num1.imaginary +this.imaginary);
+        //draw planet in the scene 
+		//where it is supposed to go, velcity, etc
     }
     
     subtract(num1)
