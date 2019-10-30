@@ -28,7 +28,7 @@ let rate = 0;
 
 
 function preload() {
-  	img = loadImage('assets/flan.jpg');
+  
 	back = loadImage('assets/clouds.jpg');
 	mars = loadImage('assets/mars.jpg');
 	planet = loadImage('assets/earth.jpg');

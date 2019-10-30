@@ -6,7 +6,7 @@ based on gravity and mass of planets ( their velocities and so forth, no special
 ability to select a planet and have the camera move to that planet
 the camera can then be dragged around the planet (and moon are also present)
 
-planets have trails of their motion in the past few seconds
+planet class : holds all information a planet needs and displays it appropriately if close enough to camera
 
 ability to add a planet of set mass and radius to a spot in the solar system and view how the system reacts. 
 (adding a huge moon to the earth would do whatever it would to the earth and moons paths)
