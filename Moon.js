@@ -1,6 +1,6 @@
 class Moon extends Planet {
     constructor() {
-        super(0, 0, 0, 43, 0, "Moon", "assets/earth.jpg");
+        super(0, 0, 0, 43, 0, "Moon", "assets/moon.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
