@@ -1,4 +1,5 @@
 class Planet {
+    
     constructor(x, y, z, radius, mass, name, texture){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
@@ -36,11 +37,9 @@ class Planet {
     //keep track of the trails of the object (the path behind it)
     drawTrail(){
         
-        stroke(255);
+        stroke(250);
 	    strokeWeight(7);
-        //noFill();
-        
-        
+        noFill();
        
         beginShape();
 
@@ -56,9 +55,11 @@ class Planet {
                 
 			}
         
-        curveVertex(300,300,300);
-        curveVertex(0,0,0);
-            
+        stroke(255);
+	    strokeWeight(10);
+        fill(255);
+        noFill();
+         
 		endShape();
        
        

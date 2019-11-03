@@ -38,37 +38,5 @@ class Moon extends Planet {
         
     }
     
-     drawTrail(){
-        
-        stroke(250);
-	    strokeWeight(7);
-        noFill();
-       
-        beginShape();
-
-			for(var rep = Math.floor((frameCount%150)/10)+1; rep < 15; rep++){
-
-				curveVertex(this.trail[rep][0], this.trail[rep][1], this.trail[rep][2]);
-                
-			}
-
-			for(var rep = 0; rep < Math.floor((frameCount%150)/10)+1; rep++){
-
-				curveVertex(this.trail[rep][0], this.trail[rep][1], this.trail[rep][2]);
-                
-			}
-        
-        stroke(255);
-	    strokeWeight(10);
-        fill(255);
-        noFill();
-         
-		endShape();
-       
-       
-    }
-    
    
-    
-    
 }
