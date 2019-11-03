@@ -7,15 +7,8 @@ class Universe {
         
         this.focused = this.planets[0];
         
-        this.font = loadFont('assets/BAUHS93.ttf');
         this.skyBox = loadImage('assets/clouds.jpg');
-        this.fontsize = 40;
 
-        this.rate = 0;
-        
-        textFont(this.font);
-	    textSize(this.fontsize);
-        textAlign(CENTER, CENTER);
         
     }
     
