@@ -33,6 +33,7 @@ class Moon extends Planet {
         strokeWeight(7);
         noFill();
         
+        
         this.drawTrail();
         
     }
@@ -57,9 +58,11 @@ class Moon extends Planet {
                 
 			}
         
-        curveVertex(300,300,300);
-        curveVertex(0,0,0);
-            
+        stroke(255);
+	    strokeWeight(10);
+        fill(255);
+        noFill();
+         
 		endShape();
        
        
