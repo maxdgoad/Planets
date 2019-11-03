@@ -32,16 +32,17 @@ function preload() {
 	back = loadImage('assets/clouds.jpg');
 	mars = loadImage('assets/mars.jpg');
 	planet = loadImage('assets/earth.jpg');
-	
     font = loadFont('assets/BAUHS93.ttf');
 
 	
 }
 
 function setup() {
-  	createCanvas(windowWidth, windowHeight, WEBGL);
+  	cnv = createCanvas(windowWidth, windowHeight, WEBGL);
 	setAttributes('antialias', true);
-	for(rep = 0; rep< 30; rep++){
+    
+    
+	for(rep = 0; rep< 30; rep++){ 
 		last[rep] = [0,0,0];
 	}
 	
@@ -122,21 +123,22 @@ function mouseWheel(event) {
 	camY*=camRad;
 	camZ*=camRad;
 	
-	console.log(camRad);
 }
-
-
 
 function draw() {
 	background(0);
 	keyDown();
 	camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction? Yes I think so after playing with it for a second ( 0,1,0 is level with xy-plane)
     
+    //orbitControl(3,3,3);
+    
     
     
     u.draw();
     
+    
     /*
+    
 
 	orbitX+=.01;
 	orbitZ+=.01;
@@ -167,14 +169,19 @@ function draw() {
 
 				curveVertex(last[rep][0], last[rep][1], last[rep][2]);
 			}
+    
+        
 
 		endShape();
 	
 	texture(planet);
 	sphere(169, 100, 100);
-	
+	*/
+    
+    
 	texture(back);
 	sphere(2000, 100);
+    
 
 	if(frameCount%5 == 0){
 		
@@ -185,7 +192,7 @@ function draw() {
 	fill(255);
 	
 	text(rate, 250, 250);
-    */
+    
 	
 }
 

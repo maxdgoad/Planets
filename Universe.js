@@ -1,6 +1,6 @@
 class Universe {
     constructor() {
-        this.planets = [new Planet(0, 0 ,0, 63.7, 0, "Sun", 'assets/earth.jpg'), new Moon()];
+        this.planets = [new Planet(0, 0 ,0, 169, 0, "Sun", 'assets/earth.jpg'), new Moon()];
         
         this.timeScale = 10; //will change later
         
@@ -8,7 +8,7 @@ class Universe {
     }
     
     draw() {
-        for(rep = 0; rep < this.planets.length; rep++){
+        for(var rep = 0; rep < this.planets.length; rep++){
             this.planets[rep].draw();
         }
     }

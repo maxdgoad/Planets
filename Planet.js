@@ -2,7 +2,6 @@ class Planet {
     constructor(x, y, z, radius, mass, name, texture){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
-        console.log(typeof(this.x))
         this.y = y;
 		this.z = z;
         this.radius = radius;
@@ -11,9 +10,9 @@ class Planet {
 
         this.texture = loadImage(texture);
         
-        this.trail = new Queue;
-        for(rep = 0; rep < 15; rep++){
-            this.trail.enqueue([0,0,0]);
+        this.trail = [];
+        for(var rep = 0; rep < 15; rep++){
+            this.trail[rep] = [0,0,0];
         }
 
     }
@@ -22,22 +21,47 @@ class Planet {
     draw() {
         //draw planet in the scene 
 		//where it is supposed to go, velocity, etc
-        //
+        
         texture(this.texture);
         translate(this.x, this.y, this.z);
         sphere(this.radius, 40, 40);
         
-        this.trail.dequeue();
-        this.trail.enqueue([this.x, this.y, this.z]);
+        this.trail[Math.floor((frameCount%150)/5)] = [this.x ,this.y ,this.z];
         
         this.drawTrail();
+
         
     }
     
     //keep track of the trails of the object (the path behind it)
     drawTrail(){
         
+        stroke(255);
+	    strokeWeight(7);
+        //noFill();
         
+        
+       
+        beginShape();
+
+			for(var rep = Math.floor((frameCount%150)/10)+1; rep < 15; rep++){
+
+				curveVertex(this.trail[rep][0], this.trail[rep][1], this.trail[rep][2]);
+                
+			}
+
+			for(var rep = 0; rep < Math.floor((frameCount%150)/10)+1; rep++){
+
+				curveVertex(this.trail[rep][0], this.trail[rep][1], this.trail[rep][2]);
+                
+			}
+        
+        curveVertex(300,300,300);
+        curveVertex(0,0,0);
+            
+		endShape();
+       
+       
     }
     
     getCoordinates(){
