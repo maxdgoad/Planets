@@ -1,7 +1,7 @@
 class Universe {
     
     constructor() {
-        this.planets = [new Planet(0, 0 ,0, 169, 0, "Sun", 'assets/earth.jpg'), new Moon()];
+        this.planets = [new Planet(0, 0 ,0, 169, 0, "Earth", 'assets/earth.jpg'), new Moon(), new Sun()];
         
         this.timeScale = 10; //will change later
         
