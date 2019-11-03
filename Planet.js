@@ -8,19 +8,18 @@ class Planet {
 		this.mass = mass;
         this.name = name
         
-        this.texture = texture;
+        this.texture = loadImage(texture);
         
-        //loadImage('assets/clouds.jpg');
+        
 		
     }
-    show() {
+    draw() {
         //draw planet in the scene 
 		//where it is supposed to go, velocity, etc
         //
+        texture(this.texture);
         translate(this.x, this.y, this.z);
-        
-        
-        sphere(this.radius);
+        sphere(this.radius, 40, 40);
     }
     
     //keep track of the trails of the object (the path behind it)

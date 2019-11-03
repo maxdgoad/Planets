@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maxdgoad/PlanetsDemo#readme",
   "dependencies": {
+    "documentation": "^12.1.2",
     "p5": "^0.10.2"
   }
 }

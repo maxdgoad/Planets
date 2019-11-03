@@ -51,7 +51,7 @@ function setup() {
 	
 	frameRate(60);
     
-    p = new Planet(0,0,0, 100, 0,"Sun", "");
+    u = new Universe();
 	
 }
 
@@ -134,7 +134,7 @@ function draw() {
     
     
     
-    p.show();
+    u.draw();
     
     /*
 
