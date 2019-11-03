@@ -33,7 +33,7 @@ function preload() {
 	mars = loadImage('assets/mars.jpg');
 	planet = loadImage('assets/earth.jpg');
 	
-	  font = loadFont('assets/BAUHS93.ttf');
+    font = loadFont('assets/BAUHS93.ttf');
 
 	
 }
@@ -50,6 +50,8 @@ function setup() {
   	textAlign(CENTER, CENTER);
 	
 	frameRate(60);
+    
+    p = new Planet(0,0,0, 100, 0,"Sun", "");
 	
 }
 
@@ -129,6 +131,12 @@ function draw() {
 	background(0);
 	keyDown();
 	camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction? Yes I think so after playing with it for a second ( 0,1,0 is level with xy-plane)
+    
+    
+    
+    p.show();
+    
+    /*
 
 	orbitX+=.01;
 	orbitZ+=.01;
@@ -177,6 +185,7 @@ function draw() {
 	fill(255);
 	
 	text(rate, 250, 250);
+    */
 	
 }
 

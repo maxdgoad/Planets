@@ -1,41 +1,57 @@
 class Planet {
-    constructor(x, y, z, radius, mass){
+    constructor(x, y, z, radius, mass, name, texture){
 		
-        this.x = x;
+        this.x = x; // the xyz position, will add velocity later (vectors hehe)
         this.y = y;
 		this.z = z;
         this.radius = radius;
 		this.mass = mass;
+        this.name = name
+        
+        this.texture = texture;
+        
+        //loadImage('assets/clouds.jpg');
 		
     }
-    draw() 
-    {
+    show() {
         //draw planet in the scene 
-		//where it is supposed to go, velcity, etc
+		//where it is supposed to go, velocity, etc
+        //
+        translate(this.x, this.y, this.z);
+        
+        
+        sphere(this.radius);
     }
     
-    subtract(num1)
-    {
-        return new Complex(num1.real - this.real, num1.imaginary - this.imaginary);
+    //keep track of the trails of the object (the path behind it)
+    drawTrail(){
     }
     
-    multiply(num1)
-    {
-        return new Complex(this.real * num1.real - this.imaginary * num1.imaginary, this.real * num1.imaginary + this.imaginary * num1.real);
+    getCoordinates(){
+        return [this.x, this.y, this.z];
     }
     
-    divide(num1)
-    {
-        return new Complex(num1.real / this.real, num1.imaginary / this.imaginary);
+    getRadius(){
+        return this.radius;
     }
+    
+    getMass(){
+        return this.mass;
+    }
+    
+    getName(){
+        return this.name
+    }
+
 	
-    log()
-    {
-        console.log(this.real + " " + this.imaginary);
+    log(){
+        console.log("Object name: " + this.name + 
+                    "\nObject XYZ: " + Math.floor(this.x) + ", " + Math.floor(this.y) + ", " + Math.floor(this.z) + 
+                    "\nObject radius: " + Math.floor(this.radius) +
+                    "\nObject mass: " + Math.floor(this.mass));
     }
     
-    mag()
-    {
+    mag(){
         return this.real *this.real + this.imaginary * this.imaginary;
     }
 }
