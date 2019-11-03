@@ -4,11 +4,7 @@ class Moon extends Planet {
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
-        
-                this.trail = [];
-        for(var rep = 0; rep < 15; rep++){
-            this.trail[rep] = [0,0,0];
-        }
+       
          
     }
     
@@ -24,15 +20,11 @@ class Moon extends Planet {
         push();
             texture(this.texture);
   		    translate(this.x, this.y, this.z);
-            sphere(43, 30, 30);
+            sphere(this.radius, 30, 30);
         pop();
         
          
-        this.trail[Math.floor((frameCount%150)/10)] = [this.x ,this.y ,this.z];
-        stroke(255);
-        strokeWeight(7);
-        noFill();
-        
+        this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
         
         this.drawTrail();
         
