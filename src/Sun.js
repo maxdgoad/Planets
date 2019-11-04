@@ -30,11 +30,10 @@ class Sun extends Planet {
         this.y = 0;
         this.z = 0;
 
-        push();
             texture(this.texture);
-  		    translate(this.x, this.y, this.z);
+            translate(this.x, this.y, this.z);
+            rotate(millis() / 1000);
             sphere(this.radius, 120, 120);
-        pop();
         
         
     }
