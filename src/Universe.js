@@ -28,7 +28,8 @@ class Universe {
 		 */
     draw() {
          
-	   texture(this.skyBox);
+       texture(this.skyBox);
+       rotate(millis() / 50000);
 	   sphere(4000, 100);
         
         for(var rep = 0; rep < this.planets.length; rep++){
