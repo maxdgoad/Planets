@@ -10,9 +10,9 @@ class Sun extends Planet {
     
     draw(){
         
-        this.x = Math.sin(this.orbitX)*300;
+        this.x = 0;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)*300;
+        this.z = 0;
 
         push();
             texture(this.texture);

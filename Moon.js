@@ -10,13 +10,13 @@ class Moon extends Planet {
     
     draw(){
         
-        this.orbitX  += .01;
-	    this.orbitZ  += .01;
+        this.orbitX  += .05;
+	    this.orbitZ  += .05;
         
-        this.x = Math.sin(this.orbitX)*300;
+        this.x = Math.sin(this.orbitX) *1000 + -1*Math.sin(this.orbitX)*200;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)*300;
-
+        this.z = Math.cos(this.orbitZ)* 1000 + 1*Math.cos(this.orbitZ)*200;;
+        
         push();
             texture(this.texture);
   		    translate(this.x, this.y, this.z);

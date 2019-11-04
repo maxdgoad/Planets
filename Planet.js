@@ -27,19 +27,6 @@ class Planet {
         //draw planet in the scene 
 		//where it is supposed to go, velocity, etc
         
-        this.x+=4;
-        
-        push();
-            texture(this.texture);
-            translate(this.x, this.y, this.z);
-            sphere(this.radius, 40, 40);
-        pop();
-        
-        
-        this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
-        
-        this.drawTrail();
-        
 
     }
     
