@@ -11,7 +11,7 @@ class Planet {
 
         this.texture = loadImage(texture);
         
-        this.trailPoints = 15; // how many points in the trail
+        this.trailPoints = 30; // how many points in the trail
         
         this.trailLength = 150; //the length (in frames) of the trail
         this.trail = [];

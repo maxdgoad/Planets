@@ -16,7 +16,7 @@ class Universe {
     draw() {
          
 	   texture(this.skyBox);
-	   sphere(3450, 100);
+	   sphere(4000, 100);
         
         for(var rep = 0; rep < this.planets.length; rep++){
             this.planets[rep].draw();
