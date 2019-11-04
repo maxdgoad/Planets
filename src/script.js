@@ -1,4 +1,5 @@
         /**
+         * does things before the program is "shown"
 		 * @pre none
 		 *		@param none
 		 *		@post does things before the program is "shown"
@@ -18,6 +19,7 @@ function setup() {
 }
 
         /**
+         * draws things into the program
 		 * @pre none
 		 *		@param none
 		 *		@post draws things into the program

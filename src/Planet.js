@@ -1,5 +1,6 @@
 class Planet {
         /**
+         * constructor
 		 * @pre none
 		 *		@param x, y, z, radius, mass, name,and texture
 		 *		@post constructor
@@ -27,6 +28,8 @@ class Planet {
 
     }
         /**
+         * draw planet in the scene 
+		 * where it is supposed to go, velocity, etc
 		 * @pre none
 		 *		@param none
 		 *		@post draws things on the program
@@ -34,15 +37,13 @@ class Planet {
 		 */
     
     draw() {
-        //draw planet in the scene 
-		//where it is supposed to go, velocity, etc
         
 
     }
     
-    //keep track of the trails of the object (the path behind it)
     
         /**
+         * keep track of the trails of the object (the path behind it)
 		 * @pre none
 		 *		@param none
 		 *		@post draws the trail
@@ -88,6 +89,7 @@ class Planet {
     }
     
         /**
+         * gets coordinates
 		 * @pre none
 		 *		@param none
 		 *		@post gets coordinates
@@ -98,6 +100,7 @@ class Planet {
     }
     
         /**
+         * gets radius
 		 * @pre none
 		 *		@param none
 		 *		@post gets radius
@@ -108,6 +111,7 @@ class Planet {
     }
     
         /**
+         * gets mass
 		 * @pre none
 		 *		@param none
 		 *		@post gets mass
@@ -118,6 +122,7 @@ class Planet {
     }
     
         /**
+         * gets name
 		 * @pre none
 		 *		@param none
 		 *		@post gets name
@@ -129,6 +134,7 @@ class Planet {
 
 	
         /**
+         * prints info about the planet
 		 * @pre none
 		 *		@param none
 		 *		@post prints info about the planet

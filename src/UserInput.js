@@ -12,6 +12,7 @@ let camY = 0;
 let camZ = 1*Math.cos(rotateZ)*camRad;
 
         /**
+         * checks for a key being pressed
 		 * @pre a key is pressed
 		 *		@param none
 		 *		@post checks for a key being pressed
@@ -67,6 +68,7 @@ function keyDown(){
 }
 
         /**
+         * sees if the mouse wheel is used
 		 * @pre mouse wheel is used
 		 *		@param none
 		 *		@post sees if the mouse wheel is used
