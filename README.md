@@ -1,6 +1,7 @@
 # Planets
 
 Team: 
+
 Poor Yorick
 
 Members:
@@ -22,6 +23,7 @@ In order to run::::
 
 first clone/download
 
+then run
 ```
 npm install
 ```
