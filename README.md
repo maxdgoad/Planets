@@ -4,12 +4,19 @@ Team:
 Poor Yorick
 
 Members:
+
 Max Goad
+
 Apurva Rai
+
 Minye Wu
+
 Meet Kapadia
+
 Jace Bayless
+
 Tri Pham
+
 
 In order to run::::
 
