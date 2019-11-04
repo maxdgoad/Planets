@@ -1,3 +1,9 @@
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post does things before the program is "shown"
+		 * 		@return none
+		 */
 function setup() {
   	cnv = createCanvas(windowWidth, windowHeight, WEBGL);
 	setAttributes('antialias', true);
@@ -11,6 +17,12 @@ function setup() {
     u = new Universe();
 }
 
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post draws things into the program
+		 * 		@return none
+		 */
 function draw() {
 	background(0);
 	keyDown();

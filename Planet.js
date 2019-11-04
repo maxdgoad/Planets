@@ -1,5 +1,10 @@
 class Planet {
-    
+        /**
+		 * @pre none
+		 *		@param x, y, z, radius, mass, name,and texture
+		 *		@post constructor
+		 * 		@return none
+		 */
     constructor(x, y, z, radius, mass, name, texture){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
@@ -21,7 +26,12 @@ class Planet {
         
 
     }
-    
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post draws things on the program
+		 * 		@return none
+		 */
     
     draw() {
         //draw planet in the scene 
@@ -31,6 +41,13 @@ class Planet {
     }
     
     //keep track of the trails of the object (the path behind it)
+    
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post draws the trail
+		 * 		@return none
+		 */
     drawTrail(){
         let iterator = Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))+1;
         
@@ -70,23 +87,53 @@ class Planet {
        
     }
     
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post gets coordinates
+		 * 		@return coordinates
+		 */
     getCoordinates(){
         return [this.x, this.y, this.z];
     }
     
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post gets radius
+		 * 		@return radius
+		 */
     getRadius(){
         return this.radius;
     }
     
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post gets mass
+		 * 		@return mass
+		 */
     getMass(){
         return this.mass;
     }
     
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post gets name
+		 * 		@return name
+		 */
     getName(){
         return this.name
     }
 
 	
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post prints info about the planet
+		 * 		@return none
+		 */
     log(){
         console.log("Object name: " + this.name + 
                     "\nObject XYZ: " + Math.floor(this.x) + ", " + Math.floor(this.y) + ", " + Math.floor(this.z) + 

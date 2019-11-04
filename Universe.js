@@ -1,5 +1,10 @@
 class Universe {
-    
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post constructor
+		 * 		@return none
+		 */
     constructor() {
         this.timescale = 10;
         this.planets = [new Earth(10), new Moon(10), new Sun(10)];
@@ -13,6 +18,12 @@ class Universe {
         
     }
     
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post prints things into the program
+		 * 		@return none
+		 */
     draw() {
          
 	   texture(this.skyBox);

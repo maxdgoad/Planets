@@ -1,4 +1,11 @@
+
 class Sun extends Planet {
+        /**
+		 * @pre none
+		 *		@param time
+		 *		@post constructor
+		 * 		@return none
+		 */
     constructor(timescale) {
         super(0, 0, 0, 240, 0, "Sun", "assets/sun.jpg");
         this.orbitX = 0;
@@ -9,6 +16,12 @@ class Sun extends Planet {
          
     }
     
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post draws things into the program
+		 * 		@return none
+		 */
     draw(){
         
         this.x = 0;

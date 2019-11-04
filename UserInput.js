@@ -11,6 +11,12 @@ let camX = -1*Math.sin(rotateX)*camRad;
 let camY = 0;
 let camZ = 1*Math.cos(rotateZ)*camRad;
 
+        /**
+		 * @pre a key is pressed
+		 *		@param none
+		 *		@post checks for a key being pressed
+		 * 		@return none
+		 */
 function keyDown(){
 	
 	if(keyIsDown(LEFT_ARROW)){
@@ -60,6 +66,12 @@ function keyDown(){
 	}
 }
 
+        /**
+		 * @pre mouse wheel is used
+		 *		@param none
+		 *		@post sees if the mouse wheel is used
+		 * 		@return none
+		 */
 function mouseWheel(event) {
 	
 	camX/=camRad;

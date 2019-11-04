@@ -1,4 +1,10 @@
 class Moon extends Planet {
+        /**
+		 * @pre none
+		 *		@param time
+		 *		@post constructor
+		 * 		@return none
+		 */
     constructor(timescale) {
         super(0, 0, 0, 43, 0, "Moon", "assets/moon.jpg");
         this.orbitX = 0;
@@ -9,7 +15,12 @@ class Moon extends Planet {
        
          
     }
-    
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post draws things to the program
+		 * 		@return none
+		 */
     draw(){
         
         this.timescale = slider.value();

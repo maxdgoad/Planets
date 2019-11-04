@@ -1,4 +1,10 @@
 class Earth extends Planet {
+        /**
+		 * @pre none
+		 *		@param time
+		 *		@post constructor
+		 * 		@return none
+		 */
     constructor(timescale) {
         super(0, 0, 0, 50, 0, "Earth", "assets/earth.jpg");
         this.orbitX = 0;
@@ -8,7 +14,12 @@ class Earth extends Planet {
        
          
     }
-    
+        /**
+		 * @pre none
+		 *		@param none
+		 *		@post draws things to the program
+		 * 		@return none
+		 */
     draw(){
         
         this.timescale = slider.value();
