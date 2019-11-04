@@ -2,7 +2,7 @@ function setup() {
   	cnv = createCanvas(windowWidth, windowHeight, WEBGL);
 	setAttributes('antialias', true);
     
-    slider = createSlider(1, 50, 25);
+    slider = createSlider(1, 50, 1);
     slider.position(10, 10);
     slider.style('width', '100px');
 	
