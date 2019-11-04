@@ -1,17 +1,20 @@
 class Earth extends Planet {
-    constructor() {
+    constructor(timescale) {
         super(0, 0, 0, 50, 0, "Earth", "assets/earth.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
+        this.timescale = timescale;
        
          
     }
     
     draw(){
         
-        this.orbitX  += .05;
-	    this.orbitZ  += .05;
+        this.timescale = slider.value();
+        
+        this.orbitX  += .001 * this.timescale;
+	    this.orbitZ  += .001 * this.timescale;
         
         this.x = Math.sin(this.orbitX)*1000;
         this.y = 0;
@@ -29,7 +32,7 @@ class Earth extends Planet {
         
         camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0);
         
-         */
+        */
 
         push();
             texture(this.texture);

@@ -1,9 +1,10 @@
 class Universe {
     
     constructor() {
-        this.planets = [new Earth(), new Moon(), new Sun()];
+        this.timescale = 10;
+        this.planets = [new Earth(10), new Moon(10), new Sun(10)];
         
-        this.timeScale = 10; //will change later
+         //will change later
         
         this.focused = this.planets[0];
         
@@ -15,7 +16,7 @@ class Universe {
     draw() {
          
 	   texture(this.skyBox);
-	   sphere(2000, 100);
+	   sphere(3450, 100);
         
         for(var rep = 0; rep < this.planets.length; rep++){
             this.planets[rep].draw();

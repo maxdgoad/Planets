@@ -1,21 +1,25 @@
 class Moon extends Planet {
-    constructor() {
+    constructor(timescale) {
         super(0, 0, 0, 43, 0, "Moon", "assets/moon.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
+        
+        this.timescale = timescale;
        
          
     }
     
     draw(){
         
-        this.orbitX  += .05;
-	    this.orbitZ  += .05;
+        this.timescale = slider.value();
         
-        this.x = Math.sin(this.orbitX) *1000 + -1*Math.sin(this.orbitX)*200;
+        this.orbitX  += .001 * this.timescale;
+	    this.orbitZ  += .001 * this.timescale;
+        
+        this.x = Math.sin(this.orbitX) *1000 + -1*Math.sin(12*this.orbitX)*200;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)* 1000 + 1*Math.cos(this.orbitZ)*200;;
+        this.z = Math.cos(this.orbitZ)* 1000 + 1*Math.cos(12*this.orbitZ)*200;
         
         push();
             texture(this.texture);
