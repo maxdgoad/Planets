@@ -1,5 +1,6 @@
 class Universe {
         /**
+         * constructor
 		 * @pre none
 		 *		@param none
 		 *		@post constructor
@@ -19,6 +20,7 @@ class Universe {
     }
     
         /**
+         * prints things into the program
 		 * @pre none
 		 *		@param none
 		 *		@post prints things into the program

@@ -1,5 +1,6 @@
 class Earth extends Planet {
         /**
+         * constructor
 		 * @pre none
 		 *		@param time
 		 *		@post constructor
@@ -15,6 +16,7 @@ class Earth extends Planet {
          
     }
         /**
+         * draws things to the program
 		 * @pre none
 		 *		@param none
 		 *		@post draws things to the program
