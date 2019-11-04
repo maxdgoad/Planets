@@ -13,6 +13,8 @@ class Moon extends Planet {
         this.orbitZ = 0;
         
         this.timescale = timescale;
+
+        this.angle = 0;
        
          
     }
@@ -36,8 +38,10 @@ class Moon extends Planet {
         
         push();
             texture(this.texture);
-  		    translate(this.x, this.y, this.z);
+            translate(this.x, this.y, this.z);
+            rotate(this.angle);  
             sphere(this.radius, 30, 30);
+            this.angle += 2;
         pop();
         
          
