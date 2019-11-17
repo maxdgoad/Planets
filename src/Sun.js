@@ -32,7 +32,7 @@ class Sun extends Planet {
 
             texture(this.texture);
             translate(this.x, this.y, this.z);
-            rotate(millis() / 1000);
+            //rotate(millis() / 1000);
             sphere(this.radius, 120, 120);
         
         
