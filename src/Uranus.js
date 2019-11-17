@@ -1,4 +1,4 @@
-class Saturn extends Planet {
+class Uranus extends Planet {
         /**
          * constructor
 		 * @pre none
@@ -8,7 +8,7 @@ class Saturn extends Planet {
 		 */
 
     constructor(timescale) {
-        super(0, 0, 0, 63, 0, "Saturn", "assets/saturn.jpg");
+        super(0, 0, 0, 60, 0, "Uranus", "assets/uranus.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
@@ -31,9 +31,9 @@ class Saturn extends Planet {
         this.orbitX  += .001 * this.timescale;
 	    this.orbitZ  += .001 * this.timescale;
         
-        this.x = Math.sin(this.orbitX)*2100;
+        this.x = Math.sin(this.orbitX)*2400;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)*2100;
+        this.z = Math.cos(this.orbitZ)*2400;
 
         
         push();

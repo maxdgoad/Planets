@@ -8,7 +8,7 @@ class Jupiter extends Planet {
 		 */
 
     constructor(timescale) {
-        super(0, 0, 0, 70, 0, "Jupiter", "assets/jupiter.jpg");
+        super(0, 0, 0, 85, 0, "Jupiter", "assets/jupiter.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;

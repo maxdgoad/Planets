@@ -8,7 +8,7 @@ class Universe {
 		 */
     constructor() {
         this.timescale = 10;
-        this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10), new Mercury(10), new Jupiter(10), new Saturn(10)];
+        this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10), new Mercury(10), new Jupiter(10), new Saturn(10), new Uranus(10), new Neptune(10)];
         
          //will change later
         
