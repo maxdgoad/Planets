@@ -1,4 +1,4 @@
-class Moon extends Planet {
+class Mars extends Planet {
         /**
          * constructor
 		 * @pre none
@@ -6,18 +6,17 @@ class Moon extends Planet {
 		 *		@post constructor
 		 * 		@return none
 		 */
+
     constructor(timescale) {
-        super(0, 0, 0, 20, 0, "Moon", "assets/moon.jpg");
+        super(0, 0, 0, 29, 0, "Mars", "assets/mars.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
-        
         this.timescale = timescale;
-
         this.angle = 0;
-       
          
     }
+
         /**
          * draws things to the program
 		 * @pre none
@@ -32,22 +31,38 @@ class Moon extends Planet {
         this.orbitX  += .001 * this.timescale;
 	    this.orbitZ  += .001 * this.timescale;
         
-        this.x = Math.sin(this.orbitX) *1000 + -1*Math.sin(12*this.orbitX)*200;
+        this.x = Math.sin(this.orbitX)*1800;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)* 1000 + 1*Math.cos(12*this.orbitZ)*200;
+        this.z = Math.cos(this.orbitZ)*1800;
+
+
+            
+        /*
+        camX = -1*Math.sin(rotateX)*camRad + Math.sin(this.orbitX) *1000;
+        camY = 0;
+        camZ = 1*Math.cos(rotateZ)*camRad + Math.cos(this.orbitZ)*1000;
+       
         
+        camX = Math.sin(this.orbitX) *1000 + -1*Math.sin(rotateX)*camRad;
+        camY = 0;
+        camZ = Math.cos(this.orbitZ)* 1000;
+        
+        camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0);
+        
+        */
         push();
             texture(this.texture);
             translate(this.x, this.y, this.z);
-            rotate(this.angle);  
+            rotate(this.angle);
             sphere(this.radius, 30, 30);
-            this.angle += 2;
+            this.angle += 1;
         pop();
         
-         
+        
         this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
         
         this.drawTrail();
+        
         
     }
     
