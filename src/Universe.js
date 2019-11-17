@@ -8,7 +8,7 @@ class Universe {
 		 */
     constructor() {
         this.timescale = 10;
-        this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10)];
+        this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10), new Mercury(10), new Jupiter(10), new Saturn(10)];
         
          //will change later
         
@@ -29,7 +29,7 @@ class Universe {
     draw() {
          
        texture(this.skyBox);
-       rotate(millis() / 50000);
+       //rotate(millis() / 50000);
 	   sphere(4000, 100);
         
         for(var rep = 0; rep < this.planets.length; rep++){

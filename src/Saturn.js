@@ -1,4 +1,4 @@
-class Mars extends Planet {
+class Saturn extends Planet {
         /**
          * constructor
 		 * @pre none
@@ -8,7 +8,7 @@ class Mars extends Planet {
 		 */
 
     constructor(timescale) {
-        super(0, 0, 0, 29, 0, "Mars", "assets/mars.jpg");
+        super(0, 0, 0, 58, 0, "Saturn", "assets/saturn.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
@@ -31,25 +31,11 @@ class Mars extends Planet {
         this.orbitX  += .001 * this.timescale;
 	    this.orbitZ  += .001 * this.timescale;
         
-        this.x = Math.sin(this.orbitX)*1400;
+        this.x = Math.sin(this.orbitX)*2100;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)*1400;
+        this.z = Math.cos(this.orbitZ)*2100;
 
-
-            
-        /*
-        camX = -1*Math.sin(rotateX)*camRad + Math.sin(this.orbitX) *1000;
-        camY = 0;
-        camZ = 1*Math.cos(rotateZ)*camRad + Math.cos(this.orbitZ)*1000;
-       
         
-        camX = Math.sin(this.orbitX) *1000 + -1*Math.sin(rotateX)*camRad;
-        camY = 0;
-        camZ = Math.cos(this.orbitZ)* 1000;
-        
-        camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0);
-        
-        */
         push();
             texture(this.texture);
             translate(this.x, this.y, this.z);
