@@ -60,7 +60,6 @@ class Earth extends Planet {
         
         
         this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
-        
         this.drawTrail();
         
         

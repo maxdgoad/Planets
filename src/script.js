@@ -16,6 +16,7 @@ function setup() {
 	frameRate(60);
     
     u = new Universe();
+    u.addPlanet(30, "Ceres", "ceres.jpg");
 }
 
         /**
@@ -33,6 +34,7 @@ function draw() {
     //orbitControl(3,3,3);
     
     u.draw();
-
+    
+    u.drawPlanet();
 }
 
