@@ -15,7 +15,7 @@ class Jupiter extends Planet {
         this.timescale = timescale;
         this.angle = 0;
          
-    }
+    } 
 
         /**
          * draws things to the program
@@ -28,8 +28,8 @@ class Jupiter extends Planet {
         
         this.timescale = slider.value();
         
-        this.orbitX  += .001 * this.timescale;
-	    this.orbitZ  += .001 * this.timescale;
+        this.orbitX  += .0001 * this.timescale;
+	    this.orbitZ  += .0001 * this.timescale;
         
         this.x = Math.sin(this.orbitX)*1800;
         this.y = 0;
@@ -39,9 +39,9 @@ class Jupiter extends Planet {
         push();
             texture(this.texture);
             translate(this.x, this.y, this.z);
-            rotate(this.angle);
-            sphere(this.radius, 30, 30);
-            this.angle += 1;
+            rotate(this.angle, createVector(0,1,0));
+            sphere(this.radius, 25);
+            this.angle += .001;
         pop();
         
         

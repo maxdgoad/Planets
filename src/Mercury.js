@@ -15,7 +15,7 @@ class Mercury extends Planet {
         this.timescale = timescale;
         this.angle = 0;
          
-    }
+    } 
 
         /**
          * draws things to the program
@@ -24,7 +24,7 @@ class Mercury extends Planet {
 		 *		@post draws things to the program
 		 * 		@return none
 		 */
-    draw(){
+    draw(){ 
         
         this.timescale = slider.value();
         
@@ -40,7 +40,7 @@ class Mercury extends Planet {
             texture(this.texture);
             translate(this.x, this.y, this.z);
             rotate(this.angle);
-            sphere(this.radius, 30, 30);
+            sphere(this.radius, 25);
             this.angle += 1;
         pop();
         

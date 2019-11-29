@@ -1,4 +1,25 @@
-        /**
+
+let bauh;
+
+let rr = "test";
+
+let word = 0;
+
+let rate = 0;
+
+var easycam;
+
+let eyeZ;
+
+let x= 0, y= 0, z= 0;
+
+function preload() {
+  bauh  = loadFont('assets/BAUHS93.TTF');
+	
+  
+}       
+
+		/**
          * does things before the program is "shown"
 		 * @pre none
 		 *		@param none
@@ -7,7 +28,15 @@
 		 */
 function setup() {
   	cnv = createCanvas(windowWidth, windowHeight, WEBGL);
-	setAttributes('antialias', true);
+	
+	
+	easycam = createEasyCam();
+	
+	eyeZ = height / 2 / tan((30 * PI) / 180);
+
+  // suppress right-click context menu
+  //document.oncontextmenu = function() { return false; }
+	
     
     slider = createSlider(1, 50, 1);
     slider.position(10, 10);
@@ -17,6 +46,14 @@ function setup() {
     
     u = new Universe();
     u.addPlanet(30, "Ceres", "ceres.jpg");
+	
+	textFont(bauh);
+  	textSize(100);
+	
+	
+	
+	
+	f = frameRate;
 }
 
         /**
@@ -25,16 +62,50 @@ function setup() {
 		 *		@param none
 		 *		@post draws things into the program
 		 * 		@return none
-		 */
+		 */  
 function draw() {
-	background(0);
-	keyDown();
-	camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction ( ie, orientation)
+	
+	
+	
+	
+	//background(0);
+	//keyDown();
+	//camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction ( ie, orientation)
     
     //orbitControl(3,3,3);
     
     u.draw();
     
     u.drawPlanet();
+	
+	if(frameCount%50 == 0){
+
+		word = Math.floor(getFrameRate());
+		rate = Math.floor(getFrameRate());
+
+	}
+
+	fill(255);
+	text(word,250,250);
+	
+	text(rr, 400, 400);
+	
+	x = easycam.getPosition()[0];
+  	y = easycam.getPosition()[1];
+	z = easycam.getPosition()[2];
+	
+	
+	line(x+100, y, z+100, 0, 0, 0);
+	stroke(255);
+	stroke(10); 
+
+	
+	
+	
+	
+}
+
+function mouseClicked(event) {
+  console.log(event);
 }
 

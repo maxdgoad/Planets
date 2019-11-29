@@ -28,7 +28,7 @@ function keyDown(){
 		camZ = cos(rotateZ)*camRad;
 		
 		
-	}
+	} 
 	
 	if(keyIsDown(RIGHT_ARROW)){
 		rotateX-=.07;

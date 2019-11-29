@@ -24,7 +24,7 @@ class Sun extends Planet {
 		 *		@post draws things into the program
 		 * 		@return none
 		 */
-    draw(){
+    draw(){ 
         
         this.x = 0;
         this.y = 0;
@@ -33,7 +33,7 @@ class Sun extends Planet {
             texture(this.texture);
             translate(this.x, this.y, this.z);
             //rotate(millis() / 1000);
-            sphere(this.radius, 120, 120);
+            sphere(this.radius, 25);
         
         
     }

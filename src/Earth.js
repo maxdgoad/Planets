@@ -8,14 +8,18 @@ class Earth extends Planet {
 		 */
 
     constructor(timescale) {
-        super(0, 0, 0, 50, 0, "Earth", "assets/earth.jpg");
+        super(0, 0, 0, 5, 0, "Earth", "assets/earth.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;
         this.timescale = timescale;
         this.angle = 0;
+		let sp;
+		
+		
+		
          
-    }
+    } 
 
         /**
          * draws things to the program
@@ -54,7 +58,7 @@ class Earth extends Planet {
             texture(this.texture);
             translate(this.x, this.y, this.z);
             rotate(this.angle);
-            sphere(this.radius, 30, 30);
+            sphere(this.radius, 25);
             this.angle += 1;
         pop();
         

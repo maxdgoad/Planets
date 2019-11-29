@@ -8,7 +8,11 @@ class Universe {
 		 */
     constructor() {
         this.timescale = 10;
-        this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10), new Mercury(10), new Jupiter(10), new Saturn(10), new Uranus(10), new Neptune(10)];
+        //this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10), new Mercury(10), new Jupiter(10), new Saturn(10), new Uranus(10), new Neptune(10)];
+		
+		//temporarily removing planets for loading reasons
+		
+		this.planets = [ new Earth(10), new Sun(10)];
         
          //will change later
         
@@ -22,7 +26,7 @@ class Universe {
         this.angle = 0;
         this.p = null;
         
-    }
+    } 
     
         /**
          * prints things into the program
@@ -35,7 +39,7 @@ class Universe {
          
        texture(this.skyBox);
        //rotate(millis() / 50000);
-	   sphere(4000, 100);
+	   sphere(4000, 25);
         
         for(var rep = 0; rep < this.planets.length-1; rep++){
             this.planets[rep].draw();
@@ -57,7 +61,7 @@ class Universe {
             texture(this.p.getTexture());
             translate(this.p.getX(), this.p.getY(), this.p.getZ());   
             rotate(this.angle);
-            sphere(this.p.getRadius(), 30, 30);
+            sphere(this.p.getRadius(), 25, 25);
             this.angle += 1;
         pop();
         this.p.setTrail(this.p.getX(),this.p.getY(),this.p.getZ());

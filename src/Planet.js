@@ -1,3 +1,5 @@
+
+
 class Planet {
         /**
          * constructor
@@ -24,9 +26,13 @@ class Planet {
         for(var rep = 0; rep < this.trailPoints; rep++){
             this.trail[rep] = [0,0,0];
         }
+		
+	
         
 
-    }
+    } 
+	
+	
         /**
          * draw planet in the scene 
 		 * where it is supposed to go, velocity, etc
@@ -79,7 +85,7 @@ class Planet {
 		endShape();
         
         stroke(255);
-	    strokeWeight(10);
+	    strokeWeight(2);
         fill(255);
         noFill();
        
