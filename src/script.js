@@ -13,6 +13,12 @@ let eyeZ;
 
 let x= 0, y= 0, z= 0;
 
+let pos;
+
+let vx=0,vy=0, vw=0, vh=0;
+
+let v;
+
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
 	
@@ -90,22 +96,27 @@ function draw() {
 	
 	text(rr, 400, 400);
 	
-	x = easycam.getPosition()[0];
-  	y = easycam.getPosition()[1];
-	z = easycam.getPosition()[2];
+	pos = easycam.getPosition();
+	
+	camX = pos[0];
+  	camY = pos[1];
+	camZ = pos[2];
 	
 	
-	line(x+100, y, z+100, 0, 0, 0);
-	stroke(255);
-	stroke(10); 
-
+	
+	v = easycam.getViewport();
+	
+	vx = v[0];
+	vy = v[1];
+	vw = v[2];
+	vh = v[3];
+	
+	console.log();
 	
 	
 	
 	
 }
 
-function mouseClicked(event) {
-  console.log(event);
-}
+
 

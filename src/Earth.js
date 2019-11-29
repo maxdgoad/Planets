@@ -29,6 +29,8 @@ class Earth extends Planet {
 		 * 		@return none
 		 */
     draw(){
+		
+		
         
         this.timescale = slider.value();
         
@@ -58,13 +60,15 @@ class Earth extends Planet {
             texture(this.texture);
             translate(this.x, this.y, this.z);
             rotate(this.angle);
-            sphere(this.radius, 25);
-            this.angle += 1;
+        	sphere(this.radius, 25);
+            this.angle += 1; 
         pop();
         
         
         this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
         this.drawTrail();
+		
+		
         
         
     }

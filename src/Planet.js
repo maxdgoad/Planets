@@ -43,6 +43,8 @@ class Planet {
 		 */
     
     draw() {
+		
+		
     }
     
     
@@ -83,6 +85,8 @@ class Planet {
         
          curveVertex(this.x, this.y, this.z);
 		endShape();
+		
+		line(camX,camY,camZ, this.x,this.y,this.z);
         
         stroke(255);
 	    strokeWeight(2);

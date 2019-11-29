@@ -25,6 +25,12 @@ class Universe {
         this.orbitZ = 0;
         this.angle = 0;
         this.p = null;
+		
+		this.state1 = {
+			distance : 2000,
+			center   : [this.x,this.y,this.z],
+			rotation : [1,1,0,0],
+		  };
         
     } 
     
@@ -36,6 +42,8 @@ class Universe {
 		 * 		@return none
 		 */
     draw() {
+		
+	  easycam.setCenter(state1.center, 100)
          
        texture(this.skyBox);
        //rotate(millis() / 50000);
