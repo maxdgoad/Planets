@@ -26,11 +26,7 @@ class Universe {
         this.angle = 0;
         this.p = null;
 		
-		this.state1 = {
-			distance : 2000,
-			center   : [this.x,this.y,this.z],
-			rotation : [1,1,0,0],
-		  };
+		
         
     } 
     
@@ -42,14 +38,15 @@ class Universe {
 		 * 		@return none
 		 */
     draw() {
+	  easycam.setCenter([this.planets[0].x, this.planets[0].y,this.planets[0].z], 0)
+	 
 		
-	  easycam.setCenter(state1.center, 100)
          
        texture(this.skyBox);
        //rotate(millis() / 50000);
 	   sphere(4000, 25);
         
-        for(var rep = 0; rep < this.planets.length-1; rep++){
+        for(var rep = 0; rep < this.planets.length; rep++){
             this.planets[rep].draw();
         }
     }

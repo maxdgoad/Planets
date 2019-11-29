@@ -14,7 +14,7 @@ class Earth extends Planet {
         this.orbitZ = 0;
         this.timescale = timescale;
         this.angle = 0;
-		let sp;
+		
 		
 		
 		

@@ -27,6 +27,12 @@ class Planet {
             this.trail[rep] = [0,0,0];
         }
 		
+		this.state1 = {
+			distance : 2000,
+			center   : [this.x ,this.y ,this. z],
+			rotation : [1,1,0,0],
+		  }; 
+		
 	
         
 
@@ -89,7 +95,8 @@ class Planet {
 		line(camX,camY,camZ, this.x,this.y,this.z);
         
         stroke(255);
-	    strokeWeight(2);
+		
+	    strokeWeight(0.01);
         fill(255);
         noFill();
        

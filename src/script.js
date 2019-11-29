@@ -1,7 +1,6 @@
 
 let bauh;
 
-let rr = "test";
 
 let word = 0;
 
@@ -94,7 +93,7 @@ function draw() {
 	fill(255);
 	text(word,250,250);
 	
-	text(rr, 400, 400);
+	
 	
 	pos = easycam.getPosition();
 	
@@ -111,7 +110,7 @@ function draw() {
 	vw = v[2];
 	vh = v[3];
 	
-	console.log();
+	console.log(easycam.getRotation());
 	
 	
 	
