@@ -1,5 +1,6 @@
 
 
+
 class Universe {
         /**
          * constructor
@@ -10,7 +11,34 @@ class Universe {
 		 */
     constructor() {
         this.timescale = 10;
-        this.planets = [new Earth(1), new Moon(1), new Sun(0), new Venus(1.62), new Mars(10), new Mercury(4.15), new Jupiter(.084), new Saturn(.033), new Uranus(.012), new Neptune(.006)]; 
+        
+		
+		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, false);
+		
+		this.planets = [
+			new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0),
+			
+			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false),
+			
+			new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false),
+			
+			this.earth,
+			
+			new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 1400, .53, false),
+			
+			new Planet(0,0,0,45,0, "Jupiter", "assets/jupiter.jpg", 1800, .084, false),
+			
+			new Planet(0,0,0,45,0, "Saturn", "assets/saturn.jpg", 2100, .033, false),
+			
+			new Planet(0,0,0,45,0, "Uranus", "assets/uranus.jpg", 2400, .012, false),
+			
+			new Planet(0,0,0,45,0, "Neptune", "assets/neptune.jpg", 3000, .006, false),
+			
+			new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth)
+			
+			
+		];
+		
 		
 		//temporarily removing planets for loading reasons
 		
@@ -18,7 +46,6 @@ class Universe {
         
          //will change later
         
-        this.focused = this.planets[0];
         
         this.skyBox = loadImage('assets/clouds.jpg');
         
@@ -31,7 +58,6 @@ class Universe {
 		this.focused = this.planets[0];
 		this.focusednum = 0;
 		
-		
         
     } 
     
@@ -43,8 +69,8 @@ class Universe {
 		 * 		@return none
 		 */
     draw() {
-	  easycam.setCenter(this.focused.state1.center, 0);
-	 
+		
+	  
 		
          
        texture(this.skyBox);
@@ -54,6 +80,8 @@ class Universe {
         for(var rep = 0; rep < this.planets.length; rep++){
             this.planets[rep].draw();
         }
+		
+		easycam.setCenter(this.focused.state1.center, 0);
     }
     
     

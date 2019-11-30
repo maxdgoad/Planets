@@ -4,7 +4,7 @@ let bauh;
 
 let word = 0;
 
-let rate = 0;
+let rate = 0; 
 
 var easycam;
 
@@ -20,6 +20,8 @@ let v;
 
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
+	
+  EarthTexture = loadImage('assets/earth2.jpg');
 	
   
 }       
@@ -55,11 +57,8 @@ function setup() {
     u = new Universe();
 	
 	textFont(bauh);
-  	textSize(100);
-	
-	
-	
-	
+  	textSize(100); 
+	 
 	f = frameRate;
 }
 

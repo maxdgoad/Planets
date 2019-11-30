@@ -8,14 +8,30 @@ class Planet {
 		 *		@post constructor
 		 * 		@return none
 		 */
-    constructor(x, y, z, radius, mass, name, texture){
+    constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
         this.y = y;
 		this.z = z;
+		
+		this.orbitX = 0;
+		this.orbitZ = 0;
         this.radius = radius;
 		this.mass = mass;
         this.name = name;
+		
+		this.moon = moon;
+		
+		if(this.moon){ 
+			this.parent = parent;
+		}
+		
+		this.distance = distance;
+		this.timescale = timescale;
+		
+		this.angle = 0;
+		
+		this.weightedTimescale = slider.value()*this.timescale;
 
         this.texture = loadImage(texture);
         
@@ -47,6 +63,40 @@ class Planet {
 		 */
     
     draw() {
+		
+		this.weightedTimescale = slider.value()*this.timescale;
+
+        
+        
+        this.orbitX  += .001 * this.weightedTimescale;
+	    this.orbitZ  += .001 * this.weightedTimescale;
+		
+		if(this.moon){
+			this.x = -1*Math.sin(12*this.orbitX)*this.distance + this.parent.x;
+        	this.y = 0;
+        	this.z = Math.cos(12*this.orbitZ)*this.distance + this.parent.x;
+			
+		}
+		
+		else{
+			this.x = Math.sin(this.orbitX)*this.distance;
+        	this.y = 0;
+        	this.z = Math.cos(this.orbitZ)*this.distance;
+		}
+        
+        
+		
+		push();
+            texture(this.texture);
+            translate(this.x, this.y, this.z);
+            rotate(this.angle);
+        	sphere(this.radius, 25);
+            this.angle += 1; 
+        pop();
+        
+        
+        this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
+        this.drawTrail();
 		
 		
     }

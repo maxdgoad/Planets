@@ -1560,7 +1560,7 @@ var Vec3 =
     var normProduct = this.mag(v1) * this.mag(v2);
     if (normProduct === 0.0) {
       return 0.0; // at least one vector is of zero length
-    }
+    } 
     
     var dot = this.dot(v1, v2);
     var threshold = normProduct * 0.9999;
