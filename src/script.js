@@ -50,7 +50,6 @@ function setup() {
 	frameRate(60);
     
     u = new Universe();
-    u.addPlanet(30, "Ceres", "ceres.jpg");
 	
 	textFont(bauh);
   	textSize(100);
@@ -80,9 +79,7 @@ function draw() {
     //orbitControl(3,3,3);
     
     u.draw();
-    
-    u.drawPlanet();
-	
+
 	if(frameCount%50 == 0){
 
 		word = Math.floor(getFrameRate());
@@ -110,11 +107,16 @@ function draw() {
 	vw = v[2];
 	vh = v[3];
 	
-	console.log(easycam.getRotation());
 	
 	
 	
 	
+	
+}
+
+function mouseClicked(){
+	console.log(mouseX + " " + mouseY);
+	u.mouseClicked(mouseX, mouseY);
 }
 
 

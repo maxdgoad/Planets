@@ -32,8 +32,6 @@ class Planet {
 			center   : [this.x ,this.y ,this. z],
 			rotation : [1,1,0,0],
 		  }; 
-		
-	
         
 
     } 

@@ -1,3 +1,5 @@
+
+
 class Universe {
         /**
          * constructor
@@ -26,6 +28,9 @@ class Universe {
         this.angle = 0;
         this.p = null;
 		
+		this.focused = this.planets[0];
+		this.focusednum = 0;
+		
 		
         
     } 
@@ -38,7 +43,7 @@ class Universe {
 		 * 		@return none
 		 */
     draw() {
-	  easycam.setCenter([this.planets[0].x, this.planets[0].y,this.planets[0].z], 0)
+	  easycam.setCenter(this.focused.state1.center);
 	 
 		
          
@@ -51,27 +56,18 @@ class Universe {
         }
     }
     
-    addPlanet(radius, name, texture){
-        this.p = new Planet(0, 0, 0, radius, 0, name, "assets/" + texture);
-    }
-    drawPlanet(){
-        this.timescale = slider.value();
-        this.orbitX  += .001 * this.timescale;
-	    this.orbitZ  += .001 * this.timescale;
-        
-        this.p.setX(Math.sin(this.orbitX)*400);
-        this.p.setY(0);
-        this.p.setZ(Math.cos(this.orbitZ)*400);
-        push();
-            texture(this.p.getTexture());
-            translate(this.p.getX(), this.p.getY(), this.p.getZ());   
-            rotate(this.angle);
-            sphere(this.p.getRadius(), 25, 25);
-            this.angle += 1;
-        pop();
-        this.p.setTrail(this.p.getX(),this.p.getY(),this.p.getZ());
-        this.p.drawTrail();
-        this.planets.push(this.p);
-    }
+    
+	
+	mouseClicked(xpos,ypos){
+		console.log(this.planets.length);
+		this.focusednum++;
+		
+		if(this.focusednum == this.planets.length)
+			this.focusednum = 0;
+		
+		this.focused = this.planets[this.focusednum];
+		
+		
+	}
     
 }
