@@ -14,7 +14,7 @@ class Mercury extends Planet {
         this.orbitZ = 0;
         this.timescale = timescale;
         this.angle = 0;
-         
+         this.weightedTimescale = slider.value()*this.timescale;
     } 
 
         /**
@@ -25,15 +25,14 @@ class Mercury extends Planet {
 		 * 		@return none
 		 */
     draw(){ 
+        this.weightedTimescale = slider.value()*this.timescale;
         
-        this.timescale = slider.value();
-        
-        this.orbitX  += .001 * this.timescale;
-	    this.orbitZ  += .001 * this.timescale;
+        this.orbitX  += .001 * this.weightedTimescale;
+	    this.orbitZ  += .001 * this.weightedTimescale;
         
         this.x = Math.sin(this.orbitX)*300;
         this.y = 0;
-        this.z = Math.cos(this.orbitZ)*300;
+        this.z = Math.cos(this.orbitZ)*300; 
 
         
         push();

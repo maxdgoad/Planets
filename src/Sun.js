@@ -13,7 +13,7 @@ class Sun extends Planet {
         this.orbitY = 0;
         this.orbitZ = 0;
         this.timescale = timescale;
-       
+       this.weightedTimescale = slider.value()*this.timescale;
          
     }
     
@@ -25,7 +25,7 @@ class Sun extends Planet {
 		 * 		@return none
 		 */
     draw(){ 
-        
+        this.weightedTimescale = slider.value()*this.timescale;
         this.x = 0;
         this.y = 0;
         this.z = 0;

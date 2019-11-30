@@ -38,6 +38,9 @@ function setup() {
 	easycam = createEasyCam();
 	
 	eyeZ = height / 2 / tan((30 * PI) / 180);
+	
+	
+
 
   // suppress right-click context menu
   //document.oncontextmenu = function() { return false; }
@@ -114,9 +117,10 @@ function draw() {
 	
 }
 
-function mouseClicked(){
+function keyTyped(){
 	console.log(mouseX + " " + mouseY);
-	u.mouseClicked(mouseX, mouseY);
+	if(key === ' ')
+		u.mouseClicked(mouseX, mouseY);
 }
 
 

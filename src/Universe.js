@@ -10,11 +10,11 @@ class Universe {
 		 */
     constructor() {
         this.timescale = 10;
-        //this.planets = [new Earth(10), new Moon(10), new Sun(10), new Venus(10), new Mars(10), new Mercury(10), new Jupiter(10), new Saturn(10), new Uranus(10), new Neptune(10)];
+        this.planets = [new Earth(1), new Moon(1), new Sun(0), new Venus(1.62), new Mars(10), new Mercury(4.15), new Jupiter(.084), new Saturn(.033), new Uranus(.012), new Neptune(.006)]; 
 		
 		//temporarily removing planets for loading reasons
 		
-		this.planets = [ new Earth(10), new Sun(10)];
+		//this.planets = [ new Earth(10), new Sun(10)];
         
          //will change later
         
@@ -43,7 +43,7 @@ class Universe {
 		 * 		@return none
 		 */
     draw() {
-	  easycam.setCenter(this.focused.state1.center);
+	  easycam.setCenter(this.focused.state1.center, 0);
 	 
 		
          
@@ -59,13 +59,15 @@ class Universe {
     
 	
 	mouseClicked(xpos,ypos){
-		console.log(this.planets.length);
+		console.log(this.focused);
 		this.focusednum++;
 		
 		if(this.focusednum == this.planets.length)
 			this.focusednum = 0;
 		
 		this.focused = this.planets[this.focusednum];
+		
+		
 		
 		
 	}

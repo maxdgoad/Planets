@@ -13,7 +13,7 @@ class Moon extends Planet {
         this.orbitZ = 0;
         
         this.timescale = timescale;
-
+		this.weightedTimescale = slider.value()*this.timescale;
         this.angle = 0;
        
          
@@ -26,11 +26,10 @@ class Moon extends Planet {
 		 * 		@return none
 		 */
     draw(){ 
+        this.weightedTimescale = slider.value()*this.timescale;
         
-        this.timescale = slider.value();
-        
-        this.orbitX  += .001 * this.timescale;
-	    this.orbitZ  += .001 * this.timescale;
+        this.orbitX  += .001 * this.weightedTimescale;
+	    this.orbitZ  += .001 * this.weightedTimescale;
         
         this.x = Math.sin(this.orbitX) *1000 + -1*Math.sin(12*this.orbitX)*200;
         this.y = 0;

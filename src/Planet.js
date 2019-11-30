@@ -60,6 +60,7 @@ class Planet {
 		 * 		@return none
 		 */
     drawTrail(){
+		this.state1.center = [this.x, this.y, this.z];
         let iterator = Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))+1;
         
         if(frameCount < this.trailLength){
@@ -90,7 +91,7 @@ class Planet {
          curveVertex(this.x, this.y, this.z);
 		endShape();
 		
-		line(camX,camY,camZ, this.x,this.y,this.z);
+		//line(camX,camY,camZ, this.x,this.y,this.z); 
         
         stroke(255);
 		
