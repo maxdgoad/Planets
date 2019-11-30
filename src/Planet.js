@@ -8,7 +8,7 @@ class Planet {
 		 *		@post constructor
 		 * 		@return none
 		 */
-    constructor(x, y, z, radius, mass, name, texture){
+    constructor(x, y, z, distance, radius, mass, name, texture){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
         this.y = y;
@@ -33,8 +33,12 @@ class Planet {
 			rotation : [1,1,0,0],
 		  }; 
 		
-	
-        
+	    this.timescale = 10;
+        this.orbitX = 0;
+        this.orbitY = 0;
+        this.orbitZ = 0;
+        this.angle = 0;
+        this.distance = distance;
 
     } 
 	
@@ -49,8 +53,59 @@ class Planet {
 		 */
     
     draw() {
+		this.timescale = slider.value();
+        this.orbitX  += .001 * this.timescale;
+	    this.orbitZ  += .001 * this.timescale;
+        
+        this.x = Math.sin(this.orbitX)*this.distance;
+        this.y = 0;
+        this.z = Math.cos(this.orbitZ)*this.distance;
+        push();
+            texture(this.texture);
+            translate(this.x, this.y, this.z);   
+            rotate(this.angle);
+            sphere(this.radius, 25, 25);
+            this.angle += 1;
+        pop();
+        this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x,this.y,this.z];	
+        
+        let iterator = Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))+1;
+        
+        if(frameCount < this.trailLength){
+            iterator = Math.floor(this.trailPoints * ( frameCount / this.trailLength));
+        }
+            
+        stroke(255);
+	    strokeWeight(10);
+        fill(255);
+        noFill();
+    
+        beginShape();
+            
+            if(frameCount > this.trailLength){
+                for(var rep = iterator; rep < this.trailPoints; rep++){
+
+                    curveVertex(this.trail[rep][0], this.trail[rep][1], this.trail[rep][2]);
+
+                }
+            }
+
+			for(var rep = 0; rep < iterator; rep++){
+
+				curveVertex(this.trail[rep][0], this.trail[rep][1], this.trail[rep][2]);
+                
+			}
+        
+         curveVertex(this.x, this.y, this.z);
+		endShape();
 		
+		line(camX,camY,camZ, this.x,this.y,this.z);
+        
+        stroke(255);
 		
+	    strokeWeight(0.01);
+        fill(255);
+        noFill();
     }
     
     
@@ -113,30 +168,6 @@ class Planet {
     getCoordinates(){
         return [this.x, this.y, this.z];
     }
-    
-    getX(){
-        return this.x;
-    }
-    
-    getY(){
-        return this.y;
-    }
-    
-    getZ(){
-        return this.z;
-    }
-    
-    setX(x){
-        this.x = x;
-    }
-    
-    setY(y){
-        this.y = y;
-    }
-    
-    setZ(z){
-        this.z = z;
-    }
         /**
          * gets radius
 		 * @pre none
@@ -159,6 +190,10 @@ class Planet {
         return this.mass;
     }
     
+    getDistance(){
+        return this.distance;
+    }
+    
         /**
          * gets name
 		 * @pre none
@@ -169,34 +204,6 @@ class Planet {
     getName(){
         return this.name
     }
-
-    getTexture(){
-        return this.texture;
-    }
-    
-    getTrailPoints(){
-        return this.trailPoints;
-    }
-    
-    getTrailLength(){
-        return this.trailLength;
-    }
-    
-    getTrail(){
-        return this.trail;
-    }
-    
-    setTrail(x,y,z){
-       this.x = x;
-       this.y = y;
-       this.z = z; this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x,this.y,this.z];
-    }
-    
-    createTexture(t){
-        t = this.texture;
-        texture(t);
-    }
-	
         /**
          * prints info about the planet
 		 * @pre none

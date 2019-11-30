@@ -8,7 +8,7 @@ class Earth extends Planet {
 		 */
 
     constructor(timescale) {
-        super(0, 0, 0, 5, 0, "Earth", "assets/earth.jpg");
+        super(0, 0, 0, 1000, 5, 0, "Earth", "assets/earth.jpg");
         this.orbitX = 0;
         this.orbitY = 0;
         this.orbitZ = 0;

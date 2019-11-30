@@ -51,26 +51,8 @@ class Universe {
         }
     }
     
-    addPlanet(radius, name, texture){
-        this.p = new Planet(0, 0, 0, radius, 0, name, "assets/" + texture);
-    }
-    drawPlanet(){
-        this.timescale = slider.value();
-        this.orbitX  += .001 * this.timescale;
-	    this.orbitZ  += .001 * this.timescale;
-        
-        this.p.setX(Math.sin(this.orbitX)*400);
-        this.p.setY(0);
-        this.p.setZ(Math.cos(this.orbitZ)*400);
-        push();
-            texture(this.p.getTexture());
-            translate(this.p.getX(), this.p.getY(), this.p.getZ());   
-            rotate(this.angle);
-            sphere(this.p.getRadius(), 25, 25);
-            this.angle += 1;
-        pop();
-        this.p.setTrail(this.p.getX(),this.p.getY(),this.p.getZ());
-        this.p.drawTrail();
+    addPlanet(distance, radius, name, texture){
+        this.p = new Planet(0, 0, 0, distance, radius, 0, name, "assets/" + texture);
         this.planets.push(this.p);
     }
     
