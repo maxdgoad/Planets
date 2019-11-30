@@ -222,6 +222,10 @@ class Planet {
     getTexture(){
         return this.texture;
     }
+
+    getDistance(){
+        return this.distance;
+    }
     
     getTrailPoints(){
         return this.trailPoints;
