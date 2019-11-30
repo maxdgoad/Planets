@@ -38,6 +38,8 @@ function setup() {
 	
 	
 	easycam = createEasyCam();
+	easycam.setDistanceMin(240);
+	easycam.setDistanceMax(2800);
 	
 	eyeZ = height / 2 / tan((30 * PI) / 180);
 	
@@ -57,7 +59,9 @@ function setup() {
     u = new Universe();
 	
 	textFont(bauh);
-  	textSize(100); 
+		textSize(100); 
+		
+
 	 
 	f = frameRate;
 }
