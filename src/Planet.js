@@ -8,14 +8,19 @@ class Planet {
 		 *		@post constructor
 		 * 		@return none
 		 */
-    constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent){
+    constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent, rotationSpeed){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
         this.y = y;
 		this.z = z;
 		
-		this.orbitX = 0;
-		this.orbitZ = 0;
+		this.rotationSpeed = 0;
+		
+		if(rotationSpeed)
+			this.rotationSpeed = rotationSpeed;
+		
+		this.orbitX = x;
+		this.orbitZ = z;
         this.radius = radius;
 		this.mass = mass;
         this.name = name;
@@ -24,6 +29,7 @@ class Planet {
 		
 		if(this.moon){ 
 			this.parent = parent;
+			console.log(this.parent);
 		}
 		
 		this.distance = distance;
@@ -71,10 +77,12 @@ class Planet {
         this.orbitX  += .001 * this.weightedTimescale;
 	    this.orbitZ  += .001 * this.weightedTimescale;
 		
-		if(this.moon){
+		if(this.moon && this.name == "Moon"){
+			
+			
 			this.x = -1*Math.sin(12*this.orbitX)*this.distance + this.parent.x;
         	this.y = 0;
-        	this.z = Math.cos(12*this.orbitZ)*this.distance + this.parent.x;
+        	this.z = Math.cos(12*this.orbitZ)*this.distance + this.parent.z;
 			
 		}
 		
@@ -83,15 +91,30 @@ class Planet {
         	this.y = 0;
         	this.z = Math.cos(this.orbitZ)*this.distance;
 		}
+		
+		if(this.name == "Saturn"){
+			push();
+            texture(this.texture);
+            translate(this.x, this.y, this.z);
+            rotateX(90);
+			rotate(this.angle);
+        	torus(this.radius + 70, 8);
+            
+        pop();
+			
+		}
+				
+				
         
         
 		
 		push();
             texture(this.texture);
             translate(this.x, this.y, this.z);
-            rotate(this.angle);
+            rotateY(this.angle);
+			
         	sphere(this.radius, 25);
-            this.angle += 1; 
+            this.angle += this.rotationSpeed; 
         pop();
         
         
@@ -162,6 +185,12 @@ class Planet {
     getCoordinates(){
         return [this.x, this.y, this.z];
     }
+	
+	distanceFromSun(){
+		return Math.sqrt(this.x*this.x +
+						this.y*this.y + 
+						this.z*this.z);
+	}
     
     getX(){
         return this.x;

@@ -49,8 +49,21 @@ function setup() {
 	
     
     slider = createSlider(1, 50, 1);
-    slider.position(10, 10);
-    slider.style('width', '100px');
+    slider.class('slider');
+	slider.position(windowWidth/2 - 250, windowHeight*.9);
+	slider.style('text', 'timescale');
+	
+	sliderDiv = createDiv('Time Scale');
+	sliderDiv.position(windowWidth/2 -95 , windowHeight*.93);
+	sliderDiv.style('font-size', '50px');
+	sliderDiv.style('color', 'white');
+	sliderDiv.style('font-weight', 'bold');
+	sliderDiv.style('text-align', 'center');
+	
+	sliderDiv.center('horizontal');
+	
+	
+	
 	
 	frameRate(60);
     
@@ -60,6 +73,20 @@ function setup() {
   	textSize(100); 
 	 
 	f = frameRate;
+	
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    	
+	
+	}
+	
+	else{
+		
+		button448 = createButton("448 planets (warning)");
+	
+	button448.mousePressed(manyPlanets);
+	button448.position(10,10);
+		
+	}
 }
 
         /**
@@ -71,7 +98,10 @@ function setup() {
 		 */  
 function draw() {
 	
+	angleMode(DEGREES); //allows angles to be entered in degrees
 	
+	sliderDiv.html('Time Scale' + ' = ' + slider.value() + 'X');
+	sliderDiv.center('horizontal');
 	
 	
 	//background(0);
@@ -88,9 +118,11 @@ function draw() {
 		rate = Math.floor(getFrameRate());
 
 	}
+	
+	
 
 	fill(255);
-	text(word,250,250);
+	text(word,800,0);
 	
 	
 	
@@ -120,6 +152,16 @@ function keyTyped(){
 	console.log(mouseX + " " + mouseY);
 	if(key === ' ')
 		u.mouseClicked(mouseX, mouseY);
+}
+
+function manyPlanets(){
+	console.log("test")
+	for(rep = 0; rep < 100; rep++){
+		let rand = Math.random()*2000;
+		u.planets.push(
+			new Planet(rand,0,rand, rand/10 ,0, "Mercury", "assets/tri.jpg", rand, 4.15, false, null, .1)
+		);
+	}
 }
 
 

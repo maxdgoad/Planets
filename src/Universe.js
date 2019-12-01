@@ -12,15 +12,21 @@ class Universe {
     constructor() {
         this.timescale = 10;
         
+		this.sun = new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0);
 		
-		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, false);
+		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, true, this.sun);
+		
+		this.moon = new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth);
+		
+		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false);
+
 		
 		this.planets = [
-			new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0),
+			this.sun,
 			
-			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false),
+			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false, null, .1),
 			
-			new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false),
+			this.venus,
 			
 			this.earth,
 			
@@ -34,7 +40,8 @@ class Universe {
 			
 			new Planet(0,0,0,45,0, "Neptune", "assets/neptune.jpg", 3000, .006, false),
 			
-			new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth)
+			this.moon, 
+			
 			
 			
 		];
@@ -70,6 +77,8 @@ class Universe {
 		 */
     draw() {
 		
+		
+		
 	  
 		
          
@@ -79,6 +88,12 @@ class Universe {
         
         for(var rep = 0; rep < this.planets.length; rep++){
             this.planets[rep].draw();
+		
+			if(this.planets[rep].distanceFromSun() <=240 && this.planets[rep].name != "Sun"){
+				
+				this.planets.splice(rep, 1);
+				//removes planet if it hits the sun
+			}
         }
 		
 		easycam.setCenter(this.focused.state1.center, 0);
@@ -94,8 +109,6 @@ class Universe {
 			this.focusednum = 0;
 		
 		this.focused = this.planets[this.focusednum];
-		
-		
 		
 		
 	}
