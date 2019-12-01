@@ -18,6 +18,8 @@ let vx=0,vy=0, vw=0, vh=0;
 
 let v;
 
+var osc;
+
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
 	
@@ -60,7 +62,15 @@ function setup() {
 	
 	textFont(bauh);
 		textSize(100); 
-		
+	
+
+		osc = new p5.Oscillator();
+		osc.setType('sine');
+		osc.freq(240);
+		osc.amp(0);
+		osc.start();
+
+		osc.amp(0.5, 0.05);
 
 	 
 	f = frameRate;
