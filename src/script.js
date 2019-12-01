@@ -151,17 +151,13 @@ function draw() {
 		lightFalloff(0,.00003, 0);
     
 
-	for(x = -1; x<=1; x++){
+		for(x = -1; x<=1; x++){
 
-    
-    u.draw();
+			for(z = -1; z<=1; z++){
+				pointLight(0, 0,1, x*300,0, z*300 );
 
-	
-		for(z = -1; z<=1; z++){
-			pointLight(0, 0,1, x*300,0, z*300 );
-
+			}
 		}
-	}
 	}
 	
 	
