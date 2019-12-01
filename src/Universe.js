@@ -99,6 +99,7 @@ class Universe {
 		easycam.setCenter(this.focused.state1.center, 0);
     }
     
+
     
 	
 	mouseClicked(xpos,ypos){
@@ -116,5 +117,6 @@ class Universe {
 
 		
 	}
+
     
 }

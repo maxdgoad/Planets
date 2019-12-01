@@ -9,6 +9,7 @@ class Planet {
 		 * 		@return none
 		 */
     constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent, rotationSpeed, zaxis){
+
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
         this.y = y;
@@ -56,8 +57,7 @@ class Planet {
 			center   : [this.x ,this.y ,this. z],
 			rotation : [1,1,0,0],
 		  }; 
-        
-		this.count = 0;
+			this.count = 0;
     } 
 	
 	
@@ -71,7 +71,9 @@ class Planet {
 		 */
     
     draw() {
-		
+
+      
+        
 		this.weightedTimescale = slider.value()*this.timescale;
 
         
@@ -129,7 +131,11 @@ class Planet {
 		this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
         this.drawTrail();
 		
+
 		
+	    strokeWeight(0.01);
+        fill(255);
+        noFill();
     }
     
     
@@ -193,6 +199,7 @@ class Planet {
     getCoordinates(){
         return [this.x, this.y, this.z];
     }
+
 	
 	distanceFromSun(){
 		return Math.sqrt(this.x*this.x +
@@ -223,6 +230,7 @@ class Planet {
     setZ(z){
         this.z = z;
     }
+
         /**
          * gets radius
 		 * @pre none
@@ -245,6 +253,10 @@ class Planet {
         return this.mass;
     }
     
+    getDistance(){
+        return this.distance;
+    }
+    
         /**
          * gets name
 		 * @pre none
@@ -255,6 +267,7 @@ class Planet {
     getName(){
         return this.name
     }
+
 
     getTexture(){
         return this.texture;
@@ -287,6 +300,7 @@ class Planet {
         texture(t);
     }
 	
+
         /**
          * prints info about the planet
 		 * @pre none

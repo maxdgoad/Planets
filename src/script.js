@@ -18,6 +18,7 @@ let vx=0,vy=0, vw=0, vh=0;
 
 let v;
 
+
 var osc;
 
 let st = false;
@@ -25,6 +26,7 @@ let st = false;
 let mobile = false;
 
 let lightsOnBool = false;
+
 
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
@@ -76,9 +78,8 @@ function setup() {
 	
 	
 	frameRate(60);
-    
     u = new Universe();
-	
+
 	textFont(bauh);
 		textSize(100); 
 	
@@ -144,12 +145,17 @@ function draw() {
 	sliderDiv.html('Time Scale' + ' = ' + slider.value() + 'X');
 	sliderDiv.center('horizontal');
 	
+
 	
 	if(!(mobile || lightsOnBool)){
 		lightFalloff(0,.00003, 0);
     
 
 	for(x = -1; x<=1; x++){
+
+    
+    u.draw();
+
 	
 		for(z = -1; z<=1; z++){
 			pointLight(0, 0,1, x*300,0, z*300 );
@@ -195,9 +201,7 @@ function draw() {
 	vw = v[2];
 	vh = v[3];
 	
-	
-	
-	
+
 	
 	
 }
@@ -241,5 +245,46 @@ function deviceShaken() {
   
 }
 
+function addNewPlanet(){
+    button = createButton('Add Planet');
+    button.mousePressed(callAddPlanet);
+    button.position(1400,10);
+    button.size(100,40);
+    button.style("font-family","Arial");
+    button.style("background-color","#000");
+    button.style("color","#fff");
+    
+    planetRadius = createInput('');
+    planetRadius.position(1400, 100);
+    planetRadius.size(50);
+    myRadius = createDiv("Enter the radius here");
+    myRadius.position(1375, 75); 
+    myRadius.style("color","#fff");
+    
+    planetName = createInput();
+    planetName.position(1400, 150);
+    planetName.size(50);
+    myPlanetName = createDiv("Enter the name here");
+    myPlanetName.position(1375, 125); 
+    myPlanetName.style("color","#fff");
+    
+    planetTexture = createInput();
+    planetTexture.position(1400, 200);
+    planetTexture.size(50);
+    myPlanetTexture = createDiv("Enter the texture here");
+    myPlanetTexture.position(1375, 175); 
+    myPlanetTexture.style("color","#fff");
+    
+    planetDistance = createInput();
+    planetDistance.position(1400, 250);
+    planetDistance.size(50);
+    myPlanetDistance = createDiv("Enter distance here");
+    myPlanetDistance.position(1375, 225); 
+    myPlanetDistance.style("color","#fff");
+}
+
+function callAddPlanet(){
+    u.addPlanet(planetDistance.value(), planetRadius.value(), planetName.value(), planetTexture.value() + ".jpg");
+}
 
 
