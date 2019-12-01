@@ -20,6 +20,12 @@ let v;
 
 var osc;
 
+let st = false;
+
+let mobile = false;
+
+let lightsOnBool = false;
+
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
 	
@@ -41,7 +47,7 @@ function setup() {
 	
 	easycam = createEasyCam();
 	easycam.setDistanceMin(240);
-	easycam.setDistanceMax(2800);
+	easycam.setDistanceMax(2800); 
 	
 	eyeZ = height / 2 / tan((30 * PI) / 180);
 	
@@ -52,7 +58,7 @@ function setup() {
   //document.oncontextmenu = function() { return false; }
 	
     
-    slider = createSlider(1, 50, 1);
+    slider = createSlider(.001, 50, .001, .001); 
     slider.class('slider');
 	slider.position(windowWidth/2 - 250, windowHeight*.9);
 	slider.style('text', 'timescale');
@@ -89,7 +95,7 @@ function setup() {
 	f = frameRate;
 	
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    	
+    	mobile = true;
 	
 	}
 	
@@ -97,10 +103,30 @@ function setup() {
 		
 		button448 = createButton("448 planets (warning)");
 	
-	button448.mousePressed(manyPlanets);
-	button448.position(10,10);
+		button448.mousePressed(manyPlanets);
+		button448.position(10,10);
+		
+		buttonPause = createButton("start");
+		
+		buttonPause.mousePressed(start);
+		buttonPause.position(10,30);
+		
+		buttonLights = createButton("Turn on the lights");
+		
+		buttonLights.mousePressed(lightsOn);
+		buttonLights.position(10,50);
+		
+	
+	
+	
+	
+		colorMode(HSB);
+	
+	
 		
 	}
+	
+	//setAttributes('perPixelLighting', true);
 }
 
         /**
@@ -112,18 +138,32 @@ function setup() {
 		 */  
 function draw() {
 	
+	
 	angleMode(DEGREES); //allows angles to be entered in degrees
 	
 	sliderDiv.html('Time Scale' + ' = ' + slider.value() + 'X');
 	sliderDiv.center('horizontal');
 	
 	
-	//background(0);
-	//keyDown();
-	//camera(camX , camY, camZ, 0, 0, 0, 0, 1, 0); // first three are camera's xyz, next three are where camera is looking, last three are orthogonal direction ( ie, orientation)
+	if(!(mobile || lightsOnBool)){
+		lightFalloff(0,.00003, 0);
     
-    //orbitControl(3,3,3);
-    
+
+	for(x = -1; x<=1; x++){
+	
+		for(z = -1; z<=1; z++){
+			pointLight(0, 0,1, x*300,0, z*300 );
+
+		}
+	}
+	}
+	
+	
+	
+	
+	
+	
+
     u.draw();
 
 	if(frameCount%50 == 0){
@@ -170,12 +210,35 @@ function keyTyped(){
 
 function manyPlanets(){
 	console.log("test")
-	for(rep = 0; rep < 100; rep++){
+	for(rep = 0; rep < 10; rep++){
 		let rand = Math.random()*2000;
 		u.planets.push(
-			new Planet(rand,0,rand, rand/10 ,0, "Mercury", "assets/tri.jpg", rand, 4.15, false, null, .1)
+			new Planet(rand,0,rand, rand/10 ,0, "Mercury", "assets/tri.jpg", rand, 4.15, false, null, .1, 1 ,1 )
 		);
 	}
+}
+
+function start(){
+	
+	
+		
+}
+
+function lightsOn(){
+	if(!lightsOnBool){
+		buttonLights.html('Turn off the lights');
+	}
+	else
+		buttonLights.html('Turn on the lights');
+
+	lightsOnBool = !lightsOnBool;
+
+}
+
+function deviceShaken() {
+  u.mouseClicked(0,0);
+  slider.value(50);
+  
 }
 
 

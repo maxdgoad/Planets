@@ -12,33 +12,33 @@ class Universe {
     constructor() {
         this.timescale = 10;
         
-		this.sun = new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0);
+		this.sun = new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0, false, null , 0,0);
 		
-		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, true, this.sun);
+		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, false, this.sun, 80, 23);
 		
-		this.moon = new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth);
+		this.moon = new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth, .4108, 0);
 		
-		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false);
+		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false, null, -.1459, 177);
 
 		
 		this.planets = [
 			this.sun,
 			
-			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false, null, .1),
+			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false, null, .2054, 0),
 			
 			this.venus,
 			
 			this.earth,
 			
-			new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 1400, .53, false),
+			new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 1400, .53, false, null, 82.24, 25),
 			
-			new Planet(0,0,0,45,0, "Jupiter", "assets/jupiter.jpg", 1800, .084, false),
+			new Planet(0,0,0,45,0, "Jupiter", "assets/jupiter.jpg", 1800, .084, false, null, 192, 3),
 			
-			new Planet(0,0,0,45,0, "Saturn", "assets/saturn.jpg", 2100, .033, false),
+			new Planet(0,0,0,45,0, "Saturn", "assets/saturn.jpg", 2100, .033, false, null, 182.4, 27),
 			
-			new Planet(0,0,0,45,0, "Uranus", "assets/uranus.jpg", 2400, .012, false),
+			new Planet(0,0,0,45,0, "Uranus", "assets/uranus.jpg", 2400, .012, false, null, 113, 98),
 			
-			new Planet(0,0,0,45,0, "Neptune", "assets/neptune.jpg", 3000, .006, false),
+			new Planet(0,0,0,45,0, "Neptune", "assets/neptune.jpg", 3000, .006, false, null, 120 , 28),
 			
 			this.moon, 
 			
@@ -112,7 +112,7 @@ class Universe {
 		
 
 		easycam.setDistanceMin(this.planets[this.focusednum].getRadius());
-		easycam.setDistanceMax((2800 - this.planets[this.focusednum].getDistance()) > 0 ? (2800 - this.planets[this.focusednum].getDistance()) : this.planets[this.focusednum].getRadius());
+		easycam.setDistanceMax((2800 - this.planets[this.focusednum].getDistance()) > 0 ? (2800 - this.planets[this.focusednum].getDistance()) : this.planets[this.focusednum].getRadius()); 
 
 		
 	}

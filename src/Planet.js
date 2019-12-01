@@ -8,11 +8,13 @@ class Planet {
 		 *		@post constructor
 		 * 		@return none
 		 */
-    constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent, rotationSpeed){
+    constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent, rotationSpeed, zaxis){
 		
         this.x = x; // the xyz position, will add velocity later (vectors hehe)
         this.y = y;
 		this.z = z;
+		
+		this.zaxis = zaxis;
 		
 		this.rotationSpeed = 0;
 		
@@ -55,7 +57,7 @@ class Planet {
 			rotation : [1,1,0,0],
 		  }; 
         
-
+		this.count = 0;
     } 
 	
 	
@@ -79,10 +81,13 @@ class Planet {
 		
 		if(this.moon && this.name == "Moon"){
 			
+			this.orbitX  += .001 * this.weightedTimescale*6.17;
+	    this.orbitZ  += .001 * this.weightedTimescale*6.17;
 			
-			this.x = -1*Math.sin(12*this.orbitX)*this.distance + this.parent.x;
+			
+			this.x = -1*Math.sin(-1*this.orbitX)*this.distance + this.parent.x;
         	this.y = 0;
-        	this.z = Math.cos(12*this.orbitZ)*this.distance + this.parent.z;
+        	this.z = Math.cos(this.orbitZ)*this.distance + this.parent.z;
 			
 		}
 		
@@ -98,27 +103,30 @@ class Planet {
             translate(this.x, this.y, this.z);
             rotateX(90);
 			rotate(this.angle);
-        	torus(this.radius + 70, 8);
+        	torus(this.radius + 70, 8, 25);
             
         pop();
 			
 		}
 				
-				
-        
-        
 		
 		push();
+			if(this.name == "Sun" && !(lightsOnBool || mobile))
+				emissiveMaterial(0, 0, 50, 1);
+			
             texture(this.texture);
             translate(this.x, this.y, this.z);
             rotateY(this.angle);
+			rotateZ(this.zaxis);
+			
+			//specularMaterial();
 			
         	sphere(this.radius, 25);
-            this.angle += this.rotationSpeed; 
+            this.angle += this.rotationSpeed*this.weightedTimescale;
         pop();
-        
-        
-        this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
+		
+		
+		this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x ,this.y ,this.z];
         this.drawTrail();
 		
 		
