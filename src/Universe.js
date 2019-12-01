@@ -14,23 +14,28 @@ class Universe {
         
 		this.sun = new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0, false, null , 0,0);
 		
-		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, false, this.sun, 80, 23);
+		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 300, 1.62, false, null, .1459, 177);
+	
+		this.mars = new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 300, .53, true, this.venus, 82.24, 25);
+		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, true, this.mars, 80, 23);
 		
 		this.moon = new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth, .4108, 0);
 		
-		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false, null, -.1459, 177);
+		
+		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 300, 1.62, true, this.moon, .1459, 177);
+		this.mars = new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 500, .53, true, this.venus, 82.24, 25);
 
 		
 		this.planets = [
 			this.sun,
 			
-			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false, null, .2054, 0),
+			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 100, 4.15, false, null, .2054, 0),
 			
 			this.venus,
 			
 			this.earth,
 			
-			new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 1400, .53, false, null, 82.24, 25),
+			this.mars,
 			
 			new Planet(0,0,0,45,0, "Jupiter", "assets/jupiter.jpg", 1800, .084, false, null, 192, 3),
 			

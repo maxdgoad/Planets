@@ -117,6 +117,16 @@ function setup() {
 		buttonLights.mousePressed(lightsOn);
 		buttonLights.position(10,50);
 		
+		buttonInfo = createButton("Info");
+		
+		buttonInfo.attribute('href', 'www.448planets.com/about.html');
+		//buttonInfo.style('color', 'white');
+		buttonInfo.position(windowWidth*.95,windowHeight*.95);
+		
+		var str = ("Info").link('about.html');
+		
+		buttonInfo.html(str);
+		
 	
 	
 	

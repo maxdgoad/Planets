@@ -81,10 +81,10 @@ class Planet {
         this.orbitX  += .001 * this.weightedTimescale;
 	    this.orbitZ  += .001 * this.weightedTimescale;
 		
-		if(this.moon && this.name == "Moon"){
+		if(this.moon ){
 			
 			this.orbitX  += .001 * this.weightedTimescale*6.17;
-	    this.orbitZ  += .001 * this.weightedTimescale*6.17;
+	    	this.orbitZ  += .001 * this.weightedTimescale*6.17;
 			
 			
 			this.x = -1*Math.sin(-1*this.orbitX)*this.distance + this.parent.x;
