@@ -95,8 +95,8 @@ class Universe {
 		
 		this.focused = this.planets[this.focusednum];
 		
+		easycam.setDistanceMin(this.planets[this.focusednum].getRadius());
 		easycam.setDistanceMax((2800 - this.planets[this.focusednum].getDistance()) > 0 ? (2800 - this.planets[this.focusednum].getDistance()) : this.planets[this.focusednum].getRadius());
-		
 		
 	}
     
