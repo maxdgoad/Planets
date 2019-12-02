@@ -579,7 +579,7 @@ function mySelectOption(){
 	
     else{
         sel.hide();
-		if(modButton){
+		//if(modButton){
         	modButton.hide();
         	modRadius.hide();
         	myModRadius.hide();
@@ -588,8 +588,8 @@ function mySelectOption(){
         	myModDistance.hide();
         	modTimescale.hide();
         	myModTimescale.hide();
-		}
-		if(addButton){
+		//}
+		//if(addButton){
         	addButton.hide();
         	planetRadius.hide();
         	myPlanetRadius.hide();
@@ -600,12 +600,12 @@ function mySelectOption(){
         	myPlanetTimescale.hide();
         	myPlanetMoon.hide();
         	moonSel.hide();
-		}
+		//}
 		
-		if(delButton){
+		//if(delButton){
 			delButton.hide();
 			sel.hide();
-		}
+		//}
     }
 }
 

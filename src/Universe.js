@@ -137,9 +137,9 @@ class Universe {
         else if(parent == "venus") parent = this.venus;
         else if(parent == "moon") parent = this.moon;
         else parent = this.sun;
-
         this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture +".jpg", distance, timescale, moon, parent, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(100)));
 
+        this.planets.push(this.p);
     }
     
 	/**
@@ -150,15 +150,12 @@ class Universe {
 	 */
     modPlanet(distance, radius, texture, timescale){
 
-        //for(var rep = 0; rep < this.planets.length; rep++){
-            //if(texture == this.planets[rep].getName().toLowerCase() + ".jpg"){
-            	console.log("test");
-                this.planets[this.focusednum] = new Planet(0, 0, 0, radius, 0, "New planet","assets/" +texture+ ".jpg", distance, timescale, false, null, this.focused.rotationSpeed, this.focused.zaxis);
-				this.focused = this.planets[this.focusednum];
-				easycam.interpolateCenter(easycam.getCenter(), this.focused.state1.center, 20);
+ 
+		console.log("test");
+		this.planets[this.focusednum] = new Planet(0, 0, 0, radius, 0, "New planet","assets/" +texture+ ".jpg", distance, timescale, false, null, this.focused.rotationSpeed, this.focused.zaxis);
+		this.focused = this.planets[this.focusednum];
+		easycam.setCenter(easycam.getCenter(), this.focused.state1.center, 20);
                 
-            //}
-        //}
 
     }
 	
