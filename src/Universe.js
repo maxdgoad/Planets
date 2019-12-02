@@ -129,7 +129,7 @@ class Universe {
         else if(parent == "venus") parent = this.venus;
         else if(parent == "moon") parent = this.moon;
         else parent = this.sun;
-        this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture, distance, timescale, moon, parent, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(100)));
+        this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture, distance, timescale, moon, parent, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(200)));
         this.planets.push(this.p);
     }
     
@@ -137,7 +137,7 @@ class Universe {
         for(var rep = 0; rep < this.planets.length; rep++){
             if(texture == this.planets[rep].getName().toLowerCase() + ".jpg"){
                 this.planets.pop();
-                this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture, distance, timescale, false, null, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(100)));
+                this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture, distance, timescale, false, null, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(200)));
                 this.planets.push(this.p);
             }
         }
