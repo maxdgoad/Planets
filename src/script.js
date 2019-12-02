@@ -99,16 +99,7 @@ function setup() {
 		osc.amp(0.2);
 		osc.start();
 
-    myOptionSel = createDiv("Pick an option");
-    myOptionSel.position(windowWidth*.80,windowHeight*.03);
-    myOptionSel.style("color","#fff");   
-    optionSel = createSelect();
-    optionSel.position(windowWidth*.80,windowHeight*.06);
-    optionSel.size(125);
-    optionSel.option('');
-    optionSel.option("Add planet");
-    optionSel.option("Modify planet");
-    optionSel.changed(mySelectOption);
+    
 	 
 	f = frameRate;
 	
@@ -145,6 +136,18 @@ function setup() {
 		var str = ("Info").link('about.html');
 		
 		buttonInfo.html(str);
+		
+		myOptionSel = createDiv("Pick an option");
+		myOptionSel.position(windowWidth*.80,windowHeight*.03);
+		myOptionSel.style("color","#fff");   
+		optionSel = createSelect();
+		optionSel.position(windowWidth*.80,windowHeight*.06);
+		optionSel.size(125);
+		optionSel.option('');
+		optionSel.option("Add planet");
+		optionSel.option("Modify planet");
+		optionSel.option("Delete planet");
+		optionSel.changed(mySelectOption);
 		
 	
 	
@@ -359,12 +362,12 @@ function modifyCurPlanet(){
 }
 
 function callAddPlanet(){
-    if(planetDistance.value() >= 10 && planetDistance.value() <= 1000 && planetRadius.value() >= 5 && planetRadius.value() <= 200 & planetTimescale.value() >= 0.001 && planetTimescale.value() <= 5){
+    if(planetDistance.value() >= 0 && planetDistance.value() <= 3000 && planetRadius.value() >= 5 && planetRadius.value() <= 1000 & planetTimescale.value() >= 0.001 && planetTimescale.value() <= 10){
         if(isMoon.value() == 'yes'){
-            u.addPlanet(planetDistance.value(), planetRadius.value(), planetTexture.value().toLowerCase() + ".jpg", planetTimescale.value(), true, planetParent.value().toLowerCase());
+            u.addPlanet(planetDistance.value(), planetRadius.value(), planetTexture.value().toLowerCase(), planetTimescale.value(), true, planetParent.value().toLowerCase());
         }
         else{
-            u.addPlanet(planetDistance.value(), planetRadius.value(), planetTexture.value().toLowerCase() + ".jpg", planetTimescale.value(), false, null);
+            u.addPlanet(planetDistance.value(), planetRadius.value(), planetTexture.value().toLowerCase(), planetTimescale.value(), false, null);
         }
     }
     else{
@@ -373,7 +376,7 @@ function callAddPlanet(){
 }
 
 function callModPlanet(){
-    if(modDistance.value() >= 10 && modDistance.value() <= 1000 && modRadius.value() >= 5 && modRadius.value() <= 200 & modTimescale.value() >= 0.001 && modTimescale.value() <= 5){
+    if(modDistance.value() >= 0 && modDistance.value() <= 3000 && modRadius.value() >= 5 && modRadius.value() <= 1000 & modTimescale.value() >= 0.001 && modTimescale.value() <= 10){
         u.modPlanet(modDistance.value(), modRadius.value(), planetTexture.value().toLowerCase(), modTimescale.value());
     }
     else{
@@ -413,6 +416,24 @@ function selectTexture(){
     planetTexture = sel;
 }
 
+function deleteCurPlanet(){
+	delButton = createButton('Delete Planet');
+    delButton.mousePressed(callDelPlanet);
+    delButton.position(windowWidth*.90,windowHeight*.03);
+    delButton.size(100,40);
+    delButton.style("font-family","Arial");
+    delButton.style("background-color","#000");
+    delButton.style("color","#fff");
+}
+
+function callDelPlanet(){
+	console.log("deleted")
+	u.planets.splice(u.focusednum, 1);
+	u.focused = u.planets[u.focusednum];
+	easycam.setCenter(u.focused.state1.center,0);
+	
+}
+
 function mySelectOption(){
     let option = optionSel.value();
     if(option == "Add planet"){
@@ -437,43 +458,75 @@ function mySelectOption(){
         modTimescale.hide();
         myModTimescale.hide();
     }
-    else if(option == "Modify planet"){
-        modifyCurPlanet();
-        selectTexture();
-        
-        addButton.hide();
-        planetRadius.hide();
-        myPlanetRadius.hide();
-        myPlanetTexture.hide();
-        planetDistance.hide();
-        myPlanetDistance.hide();
-        planetTimescale.hide();
-        myPlanetTimescale.hide();
-        myPlanetMoon.hide();
-        moonSel.hide();
+    else if(option == "Modify planet" || option == "Delete planet"){
+		
+		if(addButton){
+			addButton.hide();
+			planetRadius.hide();
+			myPlanetRadius.hide();
+			myPlanetTexture.hide();
+			planetDistance.hide();
+			myPlanetDistance.hide();
+			planetTimescale.hide();
+			myPlanetTimescale.hide();
+			myPlanetMoon.hide();
+			moonSel.hide();
+			
+		}
+		
+		if(option == "Modify planet" ){
+        	modifyCurPlanet();
+        	selectTexture();
+		}
+		
+		else if (option == "Delete planet"){
+			
+			if(modButton){
+			    modButton.hide();
+				modRadius.hide();
+				myModRadius.hide();
+				myModTexture.hide();
+				modDistance.hide();
+				myModDistance.hide();
+				modTimescale.hide();
+				myModTimescale.hide();
+				
+				planetTexture.hide();
+				sel.hide();
+			}
+			deleteCurPlanet();
+		}
     }
+	
     else{
         sel.hide();
-        
-        modButton.hide();
-        modRadius.hide();
-        myModRadius.hide();
-        myModTexture.hide();
-        modDistance.hide();
-        myModDistance.hide();
-        modTimescale.hide();
-        myModTimescale.hide();
-        
-        addButton.hide();
-        planetRadius.hide();
-        myPlanetRadius.hide();
-        myPlanetTexture.hide();
-        planetDistance.hide();
-        myPlanetDistance.hide();
-        planetTimescale.hide();
-        myPlanetTimescale.hide();
-        myPlanetMoon.hide();
-        moonSel.hide();
+		if(modButton){
+        	modButton.hide();
+        	modRadius.hide();
+        	myModRadius.hide();
+        	myModTexture.hide();
+        	modDistance.hide();
+        	myModDistance.hide();
+        	modTimescale.hide();
+        	myModTimescale.hide();
+		}
+		if(addButton){
+        	addButton.hide();
+        	planetRadius.hide();
+        	myPlanetRadius.hide();
+        	myPlanetTexture.hide();
+        	planetDistance.hide();
+        	myPlanetDistance.hide();
+        	planetTimescale.hide();
+        	myPlanetTimescale.hide();
+        	myPlanetMoon.hide();
+        	moonSel.hide();
+		}
+		
+		if(delButton){
+			delButton.hide();
+			sel.hide();
+		}
     }
 }
 
