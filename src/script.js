@@ -452,7 +452,7 @@ function mySelectEvent(){
     let item = moonSel.value();
     if(item == 'yes'){
         parentSel = createSelect();
-        parentSel.position(1400, 350);
+        parentSel.position(windowWidth*.90,windowHeight*.43);
         parentSel.size(75);
         var planets = u.getPlanetsName();
         for(var rep=0; rep<u.getPlanets().length; rep++){
@@ -460,7 +460,7 @@ function mySelectEvent(){
         }
         planetParent = parentSel;
         myPlanetParent = createDiv("Enter parent here");
-        myPlanetParent.position(1375, 325); 
+        myPlanetParent.position(windowWidth*.90,windowHeight*.40);
         myPlanetParent.style("color","#fff");
     }
     else{
@@ -550,7 +550,7 @@ function mySelectOption(){
 			myPlanetTimescale.hide();
 			myPlanetMoon.hide();
 			moonSel.hide();
-			
+			sel.hide();
 		}
 		
 		if(option == "Modify planet" ){
@@ -569,7 +569,6 @@ function mySelectOption(){
 				myModDistance.hide();
 				modTimescale.hide();
 				myModTimescale.hide();
-				
 				planetTexture.hide();
 				sel.hide();
 			}
@@ -579,7 +578,7 @@ function mySelectOption(){
 	
     else{
         sel.hide();
-		//if(modButton){
+		if(modButton){
         	modButton.hide();
         	modRadius.hide();
         	myModRadius.hide();
@@ -588,8 +587,8 @@ function mySelectOption(){
         	myModDistance.hide();
         	modTimescale.hide();
         	myModTimescale.hide();
-		//}
-		//if(addButton){
+		}
+		if(addButton){
         	addButton.hide();
         	planetRadius.hide();
         	myPlanetRadius.hide();
@@ -600,12 +599,15 @@ function mySelectOption(){
         	myPlanetTimescale.hide();
         	myPlanetMoon.hide();
         	moonSel.hide();
-		//}
+		}
 		
-		//if(delButton){
+		if(delButton){
 			delButton.hide();
 			sel.hide();
-		//}
+		}
+		
+		planetParent.hide();
+        myPlanetParent.hide();
     }
 }
 
