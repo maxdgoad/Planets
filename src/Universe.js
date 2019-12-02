@@ -14,28 +14,21 @@ class Universe {
         
 		this.sun = new Planet(0,0,0,240,0, "Sun", "assets/sun.jpg", 0, 0, false, null , 0,0);
 		
-		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 300, 1.62, false, null, .1459, 177);
-	
-		this.mars = new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 300, .53, true, this.venus, 82.24, 25);
-		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, true, this.mars, 80, 23);
+		this.earth = new Planet(0, 0, 0, 45, 0, "Earth", "assets/earth.jpg", 1000, 1, false, this.sun, 80, 23);
 		
 		this.moon = new Planet(0,0,0,20,0, "Moon", "assets/moon.jpg", 200, 1.62, true, this.earth, .4108, 0);
-		
-		
-		this.venus = new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 300, 1.62, true, this.moon, .1459, 177);
-		this.mars = new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 500, .53, true, this.venus, 82.24, 25);
 
 		
 		this.planets = [
 			this.sun,
 			
-			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 100, 4.15, false, null, .2054, 0),
+			new Planet(0,0,0,23,0, "Mercury", "assets/mercury.jpg", 300, 4.15, false, null, .2054, 0),
 			
-			this.venus,
+			new Planet(0,0,0,45,0, "Venus", "assets/venus.jpg", 500, 1.62, false, null, -.1459, 177),
 			
 			this.earth,
 			
-			this.mars,
+			new Planet(0,0,0,45,0, "Mars", "assets/mars.jpg", 1400, .53, false, null, 82.24, 25),
 			
 			new Planet(0,0,0,45,0, "Jupiter", "assets/jupiter.jpg", 1800, .084, false, null, 192, 3),
 			
@@ -47,7 +40,13 @@ class Universe {
 			
 			this.moon, 
 			
-			
+            new Planet(0,0,0,45,0, "Ceres", "assets/ceres.jpg", 5000, 0, false, null, 0, 0),
+            
+            new Planet(0,0,0,45,0, "Eris", "assets/eris.jpg", 6000, 0, false, null, 0, 0),
+            
+            new Planet(0,0,0,45,0, "Haumea", "assets/haumea.jpg", 7000, 0, false, null, 0, 0),
+            
+			new Planet(0,0,0,45,0, "Epic", "assets/epic.jpg", 8000, 0, false, null, 0, 0),
 			
 		];
 		
@@ -125,5 +124,35 @@ class Universe {
 		
 	}
 
+    addPlanet(distance, radius, texture, timescale, moon, parent){
+        if(parent == "earth") parent = this.earth;
+        else if(parent == "venus") parent = this.venus;
+        else if(parent == "moon") parent = this.moon;
+        else parent = this.sun;
+        this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture, distance, timescale, moon, parent, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(100)));
+        this.planets.push(this.p);
+    }
     
+    modPlanet(distance, radius, texture, timescale){
+        for(var rep = 0; rep < this.planets.length; rep++){
+            if(texture == this.planets[rep].getName().toLowerCase() + ".jpg"){
+                this.planets.pop();
+                this.p = new Planet(0, 0, 0, radius, 0, texture, "assets/" + texture, distance, timescale, false, null, Math.floor(Math.random() * Math.floor(100)), Math.floor(Math.random() * Math.floor(100)));
+                this.planets.push(this.p);
+            }
+        }
+    }
+    
+    getPlanets(){
+        return this.planets;
+    }
+
+    getPlanetsName(){
+        var planetsName = [];
+        for(var rep = 0; rep < this.planets.length; rep++){
+            planetsName.push(this.planets[rep].getName());
+        }
+        return planetsName;
+    }
+
 }

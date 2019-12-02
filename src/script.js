@@ -18,6 +18,11 @@ let vx=0,vy=0, vw=0, vh=0;
 
 let v;
 
+// variables for add functionality
+let addButton, planetDistance, planetRadius, planetTimescale, planetTexture, sel, moonSel, isMoon, parentSel;
+
+//variables for modify functionality
+let modButton, modDistance, modRadius, modTimescale, modTexture; 
 
 var osc;
 
@@ -94,7 +99,16 @@ function setup() {
 		osc.amp(0.2);
 		osc.start();
 
-
+    myOptionSel = createDiv("Pick an option");
+    myOptionSel.position(1250, 10); 
+    myOptionSel.style("color","#fff");   
+    optionSel = createSelect();
+    optionSel.position(1250, 30);
+    optionSel.size(125);
+    optionSel.option('');
+    optionSel.option("Add planet");
+    optionSel.option("Modify planet");
+    optionSel.changed(mySelectOption);
 	 
 	f = frameRate;
 	
@@ -265,45 +279,173 @@ function deviceShaken() {
 }
 
 function addNewPlanet(){
-    button = createButton('Add Planet');
-    button.mousePressed(callAddPlanet);
-    button.position(1400,10);
-    button.size(100,40);
-    button.style("font-family","Arial");
-    button.style("background-color","#000");
-    button.style("color","#fff");
+    addButton = createButton('Add Planet');
+    addButton.mousePressed(callAddPlanet);
+    addButton.position(1400,10);
+    addButton.size(100,40);
+    addButton.style("font-family","Arial");
+    addButton.style("background-color","#000");
+    addButton.style("color","#fff");
     
     planetRadius = createInput('');
     planetRadius.position(1400, 100);
     planetRadius.size(50);
-    myRadius = createDiv("Enter the radius here");
-    myRadius.position(1375, 75); 
-    myRadius.style("color","#fff");
+    myPlanetRadius = createDiv("Enter radius here");
+    myPlanetRadius.position(1375, 75); 
+    myPlanetRadius.style("color","#fff");
     
-    planetName = createInput();
-    planetName.position(1400, 150);
-    planetName.size(50);
-    myPlanetName = createDiv("Enter the name here");
-    myPlanetName.position(1375, 125); 
-    myPlanetName.style("color","#fff");
-    
-    planetTexture = createInput();
-    planetTexture.position(1400, 200);
-    planetTexture.size(50);
-    myPlanetTexture = createDiv("Enter the texture here");
-    myPlanetTexture.position(1375, 175); 
+    myPlanetTexture = createDiv("Choose texture here");
+    myPlanetTexture.position(1375, 125); 
     myPlanetTexture.style("color","#fff");
     
     planetDistance = createInput();
-    planetDistance.position(1400, 250);
+    planetDistance.position(1400, 200);
     planetDistance.size(50);
     myPlanetDistance = createDiv("Enter distance here");
-    myPlanetDistance.position(1375, 225); 
+    myPlanetDistance.position(1375, 175); 
     myPlanetDistance.style("color","#fff");
+    
+    planetTimescale = createInput();
+    planetTimescale.position(1400, 250);
+    planetTimescale.size(50);
+    myPlanetTimescale = createDiv("Enter timescale here");
+    myPlanetTimescale.position(1375, 225); 
+    myPlanetTimescale.style("color","#fff");
+    
+    myPlanetMoon = createDiv("Is planet a satellite?");
+    myPlanetMoon.position(1375, 275); 
+    myPlanetMoon.style("color","#fff");
+}
+
+function modifyCurPlanet(){
+    modButton = createButton('Modify Planet');
+    modButton.mousePressed(callModPlanet);
+    modButton.position(1400,10);
+    modButton.size(100,40);
+    modButton.style("font-family","Arial");
+    modButton.style("background-color","#000");
+    modButton.style("color","#fff");
+    
+    modRadius = createInput('');
+    modRadius.position(1400, 100);
+    modRadius.size(50);
+    myModRadius = createDiv("Modify radius here");
+    myModRadius.position(1375, 75); 
+    myModRadius.style("color","#fff");
+    
+    myModTexture = createDiv("Modify texture here");
+    myModTexture.position(1375, 125); 
+    myModTexture.style("color","#fff");
+    
+    modDistance = createInput();
+    modDistance.position(1400, 200);
+    modDistance.size(50);
+    myModDistance = createDiv("Modify distance here");
+    myModDistance.position(1375, 175); 
+    myModDistance.style("color","#fff");
+    
+    modTimescale = createInput();
+    modTimescale.position(1400, 250);
+    modTimescale.size(50);
+    myModTimescale = createDiv("Modify timescale here");
+    myModTimescale.position(1375, 225); 
+    myModTimescale.style("color","#fff");
 }
 
 function callAddPlanet(){
-    u.addPlanet(planetDistance.value(), planetRadius.value(), planetName.value(), planetTexture.value() + ".jpg");
+    if(planetDistance.value() >= 10 && planetDistance.value() <= 1000 && planetRadius.value() >= 5 && planetRadius.value() <= 200 & planetTimescale.value() >= 0.001 && planetTimescale.value() <= 5){
+        if(isMoon.value() == 'yes'){
+            u.addPlanet(planetDistance.value(), planetRadius.value(), planetTexture.value().toLowerCase() + ".jpg", planetTimescale.value(), true, planetParent.value().toLowerCase());
+        }
+        else{
+            u.addPlanet(planetDistance.value(), planetRadius.value(), planetTexture.value().toLowerCase() + ".jpg", planetTimescale.value(), false, null);
+        }
+    }
+    else{
+        alert("Incorrect input!");
+    }
+}
+
+function callModPlanet(){
+    if(modDistance.value() >= 10 && modDistance.value() <= 1000 && modRadius.value() >= 5 && modRadius.value() <= 200 & modTimescale.value() >= 0.001 && modTimescale.value() <= 5){
+        u.modPlanet(modDistance.value(), modRadius.value(), planetTexture.value().toLowerCase(), modTimescale.value());
+    }
+    else{
+        alert("Incorrect input!");
+    }
+}
+
+function mySelectEvent(){
+    let item = moonSel.value();
+    if(item == 'yes'){
+        parentSel = createSelect();
+        parentSel.position(1400, 350);
+        parentSel.size(75);
+        var planets = u.getPlanetsName();
+        for(var rep=0; rep<u.getPlanets().length; rep++){
+            parentSel.option(planets[rep]);
+        }
+        planetParent = parentSel;
+        myPlanetParent = createDiv("Enter parent here");
+        myPlanetParent.position(1375, 325); 
+        myPlanetParent.style("color","#fff");
+    }
+    else{
+        planetParent.hide();
+        myPlanetParent.hide();
+    }
+}
+
+function selectTexture(){
+    sel = createSelect();
+    sel.position(1400, 150);
+    sel.size(75);
+    var planets = u.getPlanetsName();
+    for(var rep=0; rep<u.getPlanets().length; rep++){
+        sel.option(planets[rep]);
+    }
+    planetTexture = sel;
+}
+
+function mySelectOption(){
+    let option = optionSel.value();
+    if(option == "Add planet"){
+        addNewPlanet();
+        selectTexture();
+        
+        moonSel = createSelect();
+        moonSel.position(1400, 300);
+        moonSel.size(50);
+        moonSel.option('');
+        moonSel.option('yes');
+        moonSel.option('no');
+        moonSel.changed(mySelectEvent);
+        isMoon = moonSel;
+        
+        modButton.hide();
+        modRadius.hide();
+        myModRadius.hide();
+        myModTexture.hide();
+        modDistance.hide();
+        myModDistance.hide();
+        modTimescale.hide();
+        myModTimescale.hide();
+    }
+    else if(option == "Modify planet"){
+        modifyCurPlanet();
+        selectTexture();
+        
+        addButton.hide();
+        planetRadius.hide();
+        myPlanetRadius.hide();
+        myPlanetTexture.hide();
+        planetDistance.hide();
+        myPlanetDistance.hide();
+        planetTimescale.hide();
+        myPlanetTimescale.hide();
+        myPlanetMoon.hide();
+        moonSel.hide();
+    }
 }
 
 

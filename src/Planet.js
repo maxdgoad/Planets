@@ -295,6 +295,9 @@ class Planet {
         return this.name
     }
 
+    getTimescale(){
+        return this.timescale;
+    }
 
     getTexture(){
         return this.texture;
@@ -338,10 +341,29 @@ class Planet {
         return this.freq;
     }
     
-    
     createTexture(t){
         t = this.texture;
         texture(t);
+    }
+    
+    setParent(parent){
+        this.parent = parent;
+    }
+    
+    setDistance(distance){
+        this.distance = distance;
+    }
+    
+    setRadius(radius){
+        this.radius = radius;
+    }
+    
+    setTexture(texture){
+        this.texture = texture;
+    }
+    
+    setTimescale(timescale){
+        this.timescale = timescale;
     }
 	
 
