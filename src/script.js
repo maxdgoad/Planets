@@ -36,7 +36,12 @@ let musicPlayingBool = false;
 
 var soundType = ['sine', 'triangle', 'square', 'sawtooth'];
 
-
+	/**
+	 * prints loads image
+	 * @name preload
+	 * @param none
+	 * @return image  
+	 */
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
 	
@@ -45,13 +50,12 @@ function preload() {
   
 }       
 
-		/**
-         * does things before the program is "shown"
-		 * @pre none
-		 *		@param none
-		 *		@post does things before the program is "shown"
-		 * 		@return none
-		 */
+	/**
+	 * sets up everything
+	 * @name setup
+	 * @param none
+	 * @return none  
+	 */
 function setup() {
   	cnv = createCanvas(windowWidth, windowHeight, WEBGL);
 	
@@ -159,13 +163,12 @@ function setup() {
 	//setAttributes('perPixelLighting', true);
 }
 
-        /**
-         * draws things into the program
-		 * @pre none
-		 *		@param none
-		 *		@post draws things into the program
-		 * 		@return none
-		 */  
+	/**
+	 * prints things into the program
+	 * @name draw
+	 * @param none
+	 * @return none  
+	 */  
 function draw() {
 	
 	
@@ -231,12 +234,24 @@ function draw() {
 	
 }
 
+	/**
+	 * the key that was typed
+	 * @name keyTyped
+	 * @param none
+	 * @return none  
+	 */
 function keyTyped(){
 	console.log(mouseX + " " + mouseY);
 	if(key === ' ')
 		u.mouseClicked(mouseX, mouseY);
 }
 
+	/**
+	 * sets up planets
+	 * @name manyPlanets
+	 * @param none
+	 * @return none  
+	 */
 function manyPlanets(){
 	console.log("test")
 	for(rep = 0; rep < 10; rep++){
@@ -247,6 +262,12 @@ function manyPlanets(){
 	}
 }
 
+	/**
+	 * starts everything
+	 * @name start
+	 * @param none
+	 * @return none  
+	 */
 function start(){
 	
 	if (!musicPlayingBool) {
@@ -267,6 +288,12 @@ function start(){
 	musicPlayingBool = !musicPlayingBool;	
 }
 
+	/**
+	 * turns lights on
+	 * @name lightsOn
+	 * @param none
+	 * @return none  
+	 */
 function lightsOn(){
 	if(!lightsOnBool){
 		buttonLights.html('Turn off the lights');
@@ -278,11 +305,24 @@ function lightsOn(){
 
 }
 
+	/**
+	 * checks to see if device is shaken or not
+	 * @name deviceShaken
+	 * @param none
+	 * @return none  
+	 */
 function deviceShaken() {
   u.mouseClicked(0,0);
   slider.value(50);
   
 }
+
+	/**
+	 * adds new planets
+	 * @name addNewPlanet
+	 * @param none
+	 * @return none  
+	 */
 
 function addNewPlanet(){
     addButton = createButton('Add Planet');
@@ -323,6 +363,12 @@ function addNewPlanet(){
     myPlanetMoon.style("color","#fff");
 }
 
+	/**
+	 * modifies planets
+	 * @name modifyCurPlanet
+	 * @param none
+	 * @return none  
+	 */
 function modifyCurPlanet(){
     modButton = createButton('Modify Planet');
     modButton.mousePressed(callModPlanet);
@@ -358,6 +404,12 @@ function modifyCurPlanet(){
     myModTimescale.style("color","#fff");
 }
 
+	/**
+	 * calls the add planets func
+	 * @name callAddPlanet
+	 * @param none
+	 * @return none  
+	 */
 function callAddPlanet(){
     if(planetDistance.value() >= 10 && planetDistance.value() <= 1000 && planetRadius.value() >= 5 && planetRadius.value() <= 200 & planetTimescale.value() >= 0.001 && planetTimescale.value() <= 5){
         if(isMoon.value() == 'yes'){
@@ -372,6 +424,12 @@ function callAddPlanet(){
     }
 }
 
+	/**
+	 * calls the modify planet func
+	 * @name callModPlanet
+	 * @param none
+	 * @return none  
+	 */
 function callModPlanet(){
     if(modDistance.value() >= 10 && modDistance.value() <= 1000 && modRadius.value() >= 5 && modRadius.value() <= 200 & modTimescale.value() >= 0.001 && modTimescale.value() <= 5){
         u.modPlanet(modDistance.value(), modRadius.value(), planetTexture.value().toLowerCase(), modTimescale.value());
@@ -381,6 +439,12 @@ function callModPlanet(){
     }
 }
 
+	/**
+	 * select what to happen within the simulator
+	 * @name meSelectEvent
+	 * @param none
+	 * @return none  
+	 */
 function mySelectEvent(){
     let item = moonSel.value();
     if(item == 'yes'){
@@ -402,6 +466,12 @@ function mySelectEvent(){
     }
 }
 
+	/**
+	 * select texture for adding and modifying
+	 * @name selectTexture
+	 * @param none
+	 * @return none  
+	 */
 function selectTexture(){
     sel = createSelect();
     sel.position(windowWidth*.90,windowHeight*.19);
@@ -413,6 +483,12 @@ function selectTexture(){
     planetTexture = sel;
 }
 
+	/**
+	 * select what to happen within the simulator
+	 * @name mySelectOption
+	 * @param none
+	 * @return none  
+	 */
 function mySelectOption(){
     let option = optionSel.value();
     if(option == "Add planet"){
