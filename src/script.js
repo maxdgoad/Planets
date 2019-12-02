@@ -230,7 +230,8 @@ function manyPlanets(){
 
 function start(){
 	
-	
+		// accommodate the autoplay policy
+		getAudioContext().resume();
 		
 }
 
