@@ -2,6 +2,12 @@
 
 class test{
 	
+	/**
+         * constructor
+	 * @name constructor
+	 * @param name, func
+ 	 * @return none  
+	 */
 	constructor(name, func){
 		this.count = 0;
 		this.pass = true;
@@ -40,6 +46,13 @@ class test{
 }
 
 let tex;
+
+	 /**
+         * Preloads into global variable
+	 * @name preload
+	 * @param none
+ 	 * @return none  
+	 */
 function preload(){
 	
 	tex = loadImage("assets/mars.jpg");
@@ -62,7 +75,12 @@ let slider = {
 
 let lightsOnBool = true;
 
-
+	 /**
+         * Sets up the test suite
+	 * @name setup
+	 * @param none
+ 	 * @return none  
+	 */
 function setup(){
 	
 	cnv = createCanvas(800, 800, WEBGL);
@@ -242,7 +260,12 @@ function setup(){
 
 }
 
-
+	 /**
+         * Tries drawing for the tests
+	 * @name draw
+	 * @param none
+ 	 * @return none  
+	 */
 function draw(){
 	
 	
