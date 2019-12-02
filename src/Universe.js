@@ -102,6 +102,8 @@ class Universe {
         }
 		
 		easycam.setCenter(this.focused.state1.center, 0);
+		this.focused.setOscAmp(1 - (easycam.getDistance() / 2700));
+		this.focused.setOscFreq(this.focused.getOscFreq() * (1 - (easycam.getDistance() / 2700)) * 1.5);
     }
     
 
@@ -118,7 +120,7 @@ class Universe {
 		
 
 		easycam.setDistanceMin(this.planets[this.focusednum].getRadius());
-		easycam.setDistanceMax((2800 - this.planets[this.focusednum].getDistance()) > 0 ? (2800 - this.planets[this.focusednum].getDistance()) : this.planets[this.focusednum].getRadius()); 
+		easycam.setDistanceMax((2700 - this.planets[this.focusednum].getDistance()) > 0 ? (2800 - this.planets[this.focusednum].getDistance()) : this.planets[this.focusednum].getRadius()); 
 
 		
 	}

@@ -57,7 +57,34 @@ class Planet {
 			center   : [this.x ,this.y ,this. z],
 			rotation : [1,1,0,0],
 		  }; 
-			this.count = 0;
+            this.count = 0;
+            
+
+        this.osc = new p5.Oscillator();
+
+        if (this.radius >= 100) {
+            this.osc.setType(soundType[0]);
+        } else if (this.radius < 100 && this.radius >= 45) {
+            this.osc.setType(soundType[1]);
+        } else if (this.radius < 45 && this.radius >= 22) {
+            this.osc.setType(soundType[2]);
+        } else {
+            this.osc.setType(soundType[3]);
+        }
+
+        if (Math.abs(this.rotationSpeed) > 50) {
+            this.freq = rotationSpeed * 4;
+            this.osc.freq(this.freq);
+        } else if (Math.abs(this.rotationSpeed) <= 50 && Math.abs(this.rotationSpeed) > 1) {
+            this.freq = this.rotationSpeed + 149
+            this.osc.freq(this.freq);
+        } else {
+            this.freq = this.rotationSpeed * 200 + 40;
+            this.osc.freq(this.freq);
+        }
+        
+        this.osc.amp(0.15);
+        this.osc.start();
     } 
 	
 	
@@ -294,6 +321,23 @@ class Planet {
        this.y = y;
        this.z = z; this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x,this.y,this.z];
     }
+
+    getOsc(){
+        return this.osc;
+    }
+
+    setOscAmp(value){
+        this.osc.amp(value);
+    }
+
+    setOscFreq(value){
+        this.osc.freq(value);
+    }
+
+    getOscFreq(){
+        return this.freq;
+    }
+    
     
     createTexture(t){
         t = this.texture;
