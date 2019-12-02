@@ -1,13 +1,12 @@
 
 
 class Planet { 
-        /**
+       /**
          * constructor
-		 * @pre none
-		 *		@param x, y, z, radius, mass, name,and texture
-		 *		@post constructor
-		 * 		@return none
-		 */
+	 * @name constructor
+	 * @param x, y, z, radius, mass, name, texture, distance, timescale, moon, parent, rotationSpeed, zaxis
+ 	 * @return none  
+	 */
     constructor(x, y, z, radius, mass, name, texture, distance, timescale, moon, parent, rotationSpeed, zaxis){
 
 		
@@ -89,15 +88,13 @@ class Planet {
     } 
 	
 	
-        /**
-         * draw planet in the scene 
-		 * where it is supposed to go, velocity, etc
-		 * @pre none
-		 *		@param none
-		 *		@post draws things on the program
-		 * 		@return none
-		 */
-    
+	/**
+	* Draws the planet to the screen
+	* @name draw
+	* @param none
+	* @return none  
+	*/
+
     draw() {
 
       
@@ -167,13 +164,12 @@ class Planet {
     }
     
     
-        /**
-         * keep track of the trails of the object (the path behind it)
-		 * @pre none
-		 *		@param none
-		 *		@post draws the trail
-		 * 		@return none
-		 */
+       /**
+         * Draws the trail behind the planet
+	 * @name drawTrail
+	 * @param none
+ 	 * @return none  
+	 */
     drawTrail(){
 		this.state1.center = [this.x, this.y, this.z];
         let iterator = Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))+1;
@@ -217,164 +213,286 @@ class Planet {
        
     }
     
-        /**
-         * gets coordinates
-		 * @pre none
-		 *		@param none
-		 *		@post gets coordinates
-		 * 		@return coordinates
-		 */
+      /**
+         * Returns the coordinates of the planet
+	 * @name getCoordinates
+	 * @param none
+ 	 * @return x,y,z  
+	 */
     getCoordinates(){
         return [this.x, this.y, this.z];
     }
 
-	
+	/**
+         * Returns the planets distance from the sun
+	 * @name distanceFromSun
+	 * @param none
+ 	 * @return distanceFromSun  
+	 */
 	distanceFromSun(){
 		return Math.sqrt(this.x*this.x +
 						this.y*this.y + 
 						this.z*this.z);
 	}
-    
+   	 /**
+         * returns the x position
+	 * @name getX
+	 * @param none
+ 	 * @return x  
+	 */
     getX(){
         return this.x;
     }
-    
+    	/**
+         * returns the y position
+	 * @name getY
+	 * @param none
+ 	 * @return y  
+	 */
     getY(){
         return this.y;
     }
     
+	/**
+         * returns the z position
+	 * @name getZ
+	 * @param none
+ 	 * @return z  
+	 */
     getZ(){
         return this.z;
     }
-    
+   	 /**
+         * Set the x position
+	 * @name setX
+	 * @param x
+ 	 * @return none  
+	 */
     setX(x){
         this.x = x;
     }
-    
+    	/**
+         * Set the y position
+	 * @name setY
+	 * @param y
+ 	 * @return none  
+	 */
     setY(y){
         this.y = y;
     }
-    
+    	/**
+         * Set the z position
+	 * @name setZ
+	 * @param none
+ 	 * @return none  
+	 */
     setZ(z){
         this.z = z;
     }
 
-        /**
-         * gets radius
-		 * @pre none
-		 *		@param none
-		 *		@post gets radius
-		 * 		@return radius
-		 */
+       	/**
+         * Returns the radius
+	 * @name getRadius
+	 * @param none
+ 	 * @return radius  
+	 */
     getRadius(){
         return this.radius;
     }
     
         /**
-         * gets mass
-		 * @pre none
-		 *		@param none
-		 *		@post gets mass
-		 * 		@return mass
-		 */
+         * Returns the mass
+	 * @name getMass
+	 * @param none
+ 	 * @return mass  
+	 */
     getMass(){
         return this.mass;
     }
     
+	/**
+         * Returns the distance
+	 * @name getDistance
+	 * @param none
+ 	 * @return distance  
+	 */
     getDistance(){
         return this.distance;
     }
     
         /**
-         * gets name
-		 * @pre none
-		 *		@param none
-		 *		@post gets name
-		 * 		@return name
-		 */
+         * Returns planet name
+	 * @name getName
+	 * @param none
+ 	 * @return name  
+	 */
     getName(){
         return this.name
     }
-
+	/**
+         * Returns timescale
+	 * @name getTimescale
+	 * @param none
+ 	 * @return timescale  
+	 */
     getTimescale(){
         return this.timescale;
     }
-
+	/**
+         * Returns the planets texture
+	 * @name getTexture
+	 * @param none
+ 	 * @return texture  
+	 */
     getTexture(){
         return this.texture;
     }
-
+	/**
+         * Returns distance from the sun
+	 * @name getDistance
+	 * @param none
+ 	 * @return distance  
+	 */
     getDistance(){
         return this.distance;
     }
-    
+    	/**
+         * Returns the trail points
+	 * @name getTrailPoints
+	 * @param none
+ 	 * @return trailPoints  
+	 */
     getTrailPoints(){
         return this.trailPoints;
     }
-    
+    	/**
+         * Returns the trail length
+	 * @name getTrailLength
+	 * @param none
+ 	 * @return trailLength  
+	 */
     getTrailLength(){
         return this.trailLength;
     }
-    
+    	/**
+         * Returns the trail
+	 * @name getTrail
+	 * @param none
+ 	 * @return trail  
+	 */
     getTrail(){
         return this.trail;
     }
-    
+   	 /**
+         * Sets the trail
+	 * @name setTrail
+	 * @param x,y,z
+ 	 * @return none  
+	 */
     setTrail(x,y,z){
        this.x = x;
        this.y = y;
        this.z = z; this.trail[Math.floor((frameCount%this.trailLength)/(this.trailLength/this.trailPoints))] = [this.x,this.y,this.z];
     }
-
+	/**
+         * Returns osc.
+	 * @name getOsc
+	 * @param none
+ 	 * @return osc  
+	 */
     getOsc(){
         return this.osc;
     }
-
+	/**
+         * Sets the osc. amp
+	 * @name setOscAmp
+	 * @param value
+ 	 * @return none  
+	 */
     setOscAmp(value){
         this.osc.amp(value);
     }
-
+	/**
+         * Sets the osc. frequency
+	 * @name setOscFreq
+	 * @param value
+ 	 * @return none  
+	 */
     setOscFreq(value){
         this.osc.freq(value);
     }
-
+	/**
+         * returns the osc. frequency
+	 * @name getOscFreq
+	 * @param none
+ 	 * @return freq  
+	 */
     getOscFreq(){
         return this.freq;
     }
-    
+    	/**
+         * Changes the planets texture
+	 * @name createTexture
+	 * @param t
+ 	 * @return none  
+	 */
     createTexture(t){
         t = this.texture;
         texture(t);
     }
-    
+    	/**
+         * Changes the parent of the planet
+	 * @name setParent
+	 * @param parent
+ 	 * @return none  
+	 */
     setParent(parent){
         this.parent = parent;
     }
-    
+    	/**
+         * Sets the distance from parent
+	 * @name setDistance
+	 * @param distance
+ 	 * @return none  
+	 */
     setDistance(distance){
         this.distance = distance;
     }
-    
+    	/**
+         * Sets the planets radius
+	 * @name setRadius
+	 * @param radius
+ 	 * @return none  
+	 */
     setRadius(radius){
         this.radius = radius;
     }
-    
+    	/**
+         * Sets the texture of the planet
+	 * @name setTexture
+	 * @param texture
+ 	 * @return none  
+	 */
     setTexture(texture){
         this.texture = texture;
     }
-    
+    	/**
+         * Sets the timescale 
+	 * @name setTimescale
+	 * @param timescale
+ 	 * @return none  
+	 */
     setTimescale(timescale){
         this.timescale = timescale;
     }
 	
 
         /**
-         * prints info about the planet
-		 * @pre none
-		 *		@param none
-		 *		@post prints info about the planet
-		 * 		@return none
-		 */
+         * logs information about the planet
+	 * @name log
+	 * @param none
+ 	 * @return none  
+	 */
     log(){
         console.log("Object name: " + this.name + 
                     "\nObject XYZ: " + Math.floor(this.x) + ", " + Math.floor(this.y) + ", " + Math.floor(this.z) + 

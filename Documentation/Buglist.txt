@@ -1,0 +1,9 @@
+Buglist
+
+1:	When you zoom out too much from the simulator, it starts to freak out but when you zoom back in, it goes back to normal (only on some of the machines).
+2:	Works for most machines, but weird things might happen on others.
+3:	The Sun only has 8 lights because the library only supports that many, making the Sun not as bright as it can be.
+4:	No ray casting functions.
+5:	When creating a new planet, the trail starts from (0,0,0) instead of just starting where the planet starts.
+6:	Gravity issues with multiple planets.
+7:	The new textures can get a little messed up.
