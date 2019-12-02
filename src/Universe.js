@@ -7,7 +7,7 @@ class Universe {
 		 * @pre none
 		 *		@param none
 		 *		@post constructor
-		 * 		@return none
+		 * 		@return none  
 		 */
     constructor() {
         this.timescale = 10;

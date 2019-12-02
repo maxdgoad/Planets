@@ -1,6 +1,6 @@
 
 
-class Planet {
+class Planet { 
         /**
          * constructor
 		 * @pre none
@@ -84,7 +84,8 @@ class Planet {
         }
         
         this.osc.amp(0.15);
-        this.osc.start();
+		
+		this.osc.stop();
     } 
 	
 	

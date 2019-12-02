@@ -2,7 +2,7 @@
 let bauh;
 
 
-let word = 0;
+let word = 0; 
 
 let rate = 0; 
 
@@ -253,9 +253,15 @@ function start(){
 			buttonPause.html('Turn off Music!');
 			// accommodate the autoplay policy
 			getAudioContext().resume();
+			for(rep = 0; rep < u.planets.length; rep++){
+				u.planets[rep].osc.start();
+			}
 	} else {
 			getAudioContext().suspend();
 			buttonPause.html('Turn on Music!');
+		for(rep = 0; rep < u.planets.length; rep++){
+				u.planets[rep].osc.stop();
+			}
 	}
 	
 	musicPlayingBool = !musicPlayingBool;	
