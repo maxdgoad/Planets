@@ -4,11 +4,10 @@
 class Universe {
         /**
          * constructor
-		 * @pre none
-		 *		@param none
-		 *		@post constructor
-		 * 		@return none  
-		 */
+	 * @name constructor
+	 * @param none
+ 	 * @return none  
+	 */
     constructor() {
         this.timescale = 10;
         
@@ -71,14 +70,14 @@ class Universe {
 		
         
     } 
-    
-        /**
-         * prints things into the program
-		 * @pre none
-		 *		@param none
-		 *		@post prints things into the program
-		 * 		@return none
-		 */
+
+	
+	/**
+	 * prints things into the program
+	 * @name draw
+	 * @param none
+	 * @return none  
+	 */
     draw() {
 		
 		
@@ -104,10 +103,13 @@ class Universe {
 		this.focused.setOscAmp(1 - (easycam.getDistance() / 2700));
 		this.focused.setOscFreq(this.focused.getOscFreq() * (1 - (easycam.getDistance() / 2700)) * 1.5);
     }
-    
 
-    
-	
+	/**
+         * Handles mouse clicks
+	 * @name mouseClicked
+	 * @param xpos, ypos
+ 	 * @return none  
+	 */
 	mouseClicked(xpos,ypos){
 		console.log(this.focused);
 		this.focusednum++;
@@ -124,6 +126,12 @@ class Universe {
 		
 	}
 
+	/**
+         * Handles adding the planet to the universe
+	 * @name addPlanet
+	 * @param distance, radius, texture, timescale, moon, parent
+ 	 * @return none  
+	 */
     addPlanet(distance, radius, texture, timescale, moon, parent){
         if(parent == "earth") parent = this.earth;
         else if(parent == "venus") parent = this.venus;
@@ -133,6 +141,12 @@ class Universe {
         this.planets.push(this.p);
     }
     
+	/**
+         * Modifies an added planet
+	 * @name modPlanet
+	 * @param distance, radius, texture, timescale
+ 	 * @return none  
+	 */
     modPlanet(distance, radius, texture, timescale){
         for(var rep = 0; rep < this.planets.length; rep++){
             if(texture == this.planets[rep].getName().toLowerCase() + ".jpg"){
@@ -143,10 +157,22 @@ class Universe {
         }
     }
     
+	/**
+         * Returns the planets
+	 * @name getPlanets
+	 * @param none
+ 	 * @return planets  
+	 */
     getPlanets(){
         return this.planets;
     }
 
+	/**
+         * Returns the planets names
+	 * @name getPlanetsName
+	 * @param none
+ 	 * @return planetsName  
+	 */
     getPlanetsName(){
         var planetsName = [];
         for(var rep = 0; rep < this.planets.length; rep++){
