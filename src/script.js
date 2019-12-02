@@ -27,6 +27,8 @@ let mobile = false;
 
 let lightsOnBool = false;
 
+var soundType = ['sine', 'triangle', 'square', 'sawtooth'];
+
 
 function preload() {
   bauh  = loadFont('assets/BAUHS93.TTF');
@@ -49,7 +51,7 @@ function setup() {
 	
 	easycam = createEasyCam();
 	easycam.setDistanceMin(240);
-	easycam.setDistanceMax(2800); 
+	easycam.setDistanceMax(2700); 
 	
 	eyeZ = height / 2 / tan((30 * PI) / 180);
 	
@@ -87,10 +89,9 @@ function setup() {
 		osc = new p5.Oscillator();
 		osc.setType('sine');
 		osc.freq(240);
-		osc.amp(0);
+		osc.amp(0.2);
 		osc.start();
 
-		osc.amp(0.5, 0.05);
 
 	 
 	f = frameRate;
