@@ -121,7 +121,9 @@ function setup() {
 		
 		buttonInfo.attribute('href', 'www.448planets.com/about.html');
 		//buttonInfo.style('color', 'white');
-		buttonInfo.position(windowWidth*.95,windowHeight*.95);
+		buttonInfo.position(windowWidth*.95,windowHeight*.92);
+		buttonInfo.style('width', "50px");
+		buttonInfo.style('height', "50px");
 		
 		var str = ("Info").link('about.html');
 		

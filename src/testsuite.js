@@ -225,13 +225,19 @@ function setup(){
 	number.style('font-size', '35px');
 	number.html('Test '+ (currentTest+1) + ": " + tests[currentTest].name);
 	
-	testPassed = [];
 	
-	a = createDiv('Test '+ (currentTest+1));
-	a.position(1000,0);
-	a.style('color', 'black');
-	a.style('font-size', '35px');
-	a.html('Test '+ (currentTest+1) + ": " + tests[currentTest].name);
+	buttonInfo = createButton("Info");
+		
+	buttonInfo.attribute('href', 'www.448planets.com/about.html');
+	//buttonInfo.style('color', 'white');
+	buttonInfo.position(windowWidth*.95,windowHeight*.92);
+
+	var str = ("Info").link('about.html');
+	
+	buttonInfo.style('width', "50px");
+	buttonInfo.style('height', "50px");
+
+	buttonInfo.html(str);
 
 
 }
@@ -248,8 +254,18 @@ function draw(){
 			console.log(tests[currentTest].pass)
 			
 		}
-		if(tests[currentTest].pass)
-				passes++;
+		if(tests[currentTest].pass){
+			passes++;
+			var a;
+			a = createDiv('Test '+ (currentTest+1));
+			a.position(800,55*(currentTest+1));
+			a.style('color', 'black');
+			a.style('font-size', '25px');
+			a.html('Test '+ (currentTest+1) + ": " + tests[currentTest].name  + "<div style='color: green'>pass</div>");
+			
+			
+		}
+				
 		currentTest++;
 	}
 	
