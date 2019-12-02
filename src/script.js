@@ -27,6 +27,8 @@ let mobile = false;
 
 let lightsOnBool = false;
 
+let musicPlayingBool = false;
+
 var soundType = ['sine', 'triangle', 'square', 'sawtooth'];
 
 
@@ -108,7 +110,7 @@ function setup() {
 		button448.mousePressed(manyPlanets);
 		button448.position(10,10);
 		
-		buttonPause = createButton("start");
+		buttonPause = createButton("Turn on Music!");
 		
 		buttonPause.mousePressed(start);
 		buttonPause.position(10,30);
@@ -233,9 +235,16 @@ function manyPlanets(){
 
 function start(){
 	
-		// accommodate the autoplay policy
-		getAudioContext().resume();
-		
+	if (!musicPlayingBool) {
+			buttonPause.html('Turn off Music!');
+			// accommodate the autoplay policy
+			getAudioContext().resume();
+	} else {
+			getAudioContext().suspend();
+			buttonPause.html('Turn on Music!');
+	}
+	
+	musicPlayingBool = !musicPlayingBool;	
 }
 
 function lightsOn(){
