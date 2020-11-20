@@ -2,6 +2,10 @@
 
 448Planets was created for the EECS 448 class at KU. It is a somewhat "accurate" solar system simulator where the user can add and customize new or existing planets/moons. Furthermore, the simulator plays music for each planet/moon through a custom-made synthesizer.
 
+##Demo comments From Professor
+
+## Screenshot
+
 ![Image of Yaktocat](https://github.com/maxdgoad/Planets/blob/master/screenshots/SC3.jpg)
 
 ## Installation
